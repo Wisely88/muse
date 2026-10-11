@@ -1,5 +1,8 @@
 *.log
+*.zip
+*.tar.gz
 .DS_Store
 __pycache__/
 .idea/
 .vscode/
+
