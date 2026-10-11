@@ -22,12 +22,13 @@ Here is how to structure 0-6s cinematic long takes using sequential camera direc
 ### Tweet 3/3
 
 ```text
-We integrated this timeline feature into Muse Prompt Studio:
-1-click toggle for [0-3s] and [3-6s] motion design + Markdown storyboard export.
+3/ Try 0-6s long takes in Muse Studio:
+👉 https://wisely88.github.io/muse/
 
-Free, open-source & private:
-https://github.com/Wisely88/muse
+🎁 Grab 1 BILLION Free Tokens on Muse:
+Join: https://muse.ai/join
+Code: YB9JT8 (Redeem in Settings within 48h!)
 
-Share with anyone making AI films! 🚀🎥
+RT & share with AI filmmakers! 🚀🎥
 ```
 

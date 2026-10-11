@@ -83,14 +83,14 @@ Here is how pros architect cinematic prompts (and a free open-source studio to b
             },
             {
                 "tweet_num": 3,
-                "text": """2/ We built "Muse Prompt Studio Max" — a 100% client-side director workbench:
-✨ 22 aesthetics (Anime, Retro, Film, UE5)
-✨ Auto brand sanitization
-✨ 0-3s & 3-6s camera timeline
-✨ Native Hollywood English
+                "text": """2/ Claim 1 BILLION Free Tokens on Muse:
+🎁 Join: https://muse.ai/join
+🔑 Code: YB9JT8 (Redeem in "Settings" within 48h!)
 
-Live Demo & Code: https://github.com/Wisely88/muse
-Star & RT! 🎬🚀"""
+🎬 Free 1-click Prompt Studio (22 styles, brand sanitization, 0-6s timeline):
+👉 https://wisely88.github.io/muse/
+
+RT to share! 🚀"""
             }
         ]
     },
@@ -158,13 +158,14 @@ Here is how to get authentic hand-drawn watercolor anime motion in Sora, Kling &
             },
             {
                 "tweet_num": 3,
-                "text": """We added 8 dedicated anime & cartoon modules into Muse Prompt Studio:
-🌸 Studio Ghibli
-🌧️ Makoto Shinkai (Your Name)
-🧸 Pixar 3D (Subsurface scattering)
-🕷️ Spider-Verse (Ben-Day pop art)
+                "text": """3/ Try our 8 anime modules in Muse Prompt Studio:
+👉 https://wisely88.github.io/muse/
 
-Try it free & offline: https://github.com/Wisely88/muse 🚀"""
+🎁 Plus, get 1 BILLION Free Tokens on Muse:
+Sign up: https://muse.ai/join
+Code: YB9JT8 (Redeem in Settings in 48h!)
+
+RT & create magic! 🌸✨"""
             }
         ]
     },
@@ -230,11 +231,14 @@ Here is the director-level breakdown: 🧵👇"""
             },
             {
                 "tweet_num": 3,
-                "text": """All 22 retro & cinematic styles are pre-built inside our open-source Muse Studio.
-Zero backend, runs in any browser:
-https://github.com/Wisely88/muse
+                "text": """3/ 22 film aesthetics built-in to Muse Studio:
+👉 https://wisely88.github.io/muse/
 
-RT & Bookmark if you love cinematic film aesthetics! 🎥✨"""
+🎁 Plus, grab 1 BILLION Free Tokens on Muse:
+Join: https://muse.ai/join
+Code: YB9JT8 (Go to Settings within 48h!)
+
+RT & bookmark for film buffs! 🎥🇭🇰"""
             }
         ]
     },
@@ -301,13 +305,14 @@ Here is how to structure 0-6s cinematic long takes using sequential camera direc
             },
             {
                 "tweet_num": 3,
-                "text": """We integrated this timeline feature into Muse Prompt Studio:
-1-click toggle for [0-3s] and [3-6s] motion design + Markdown storyboard export.
+                "text": """3/ Try 0-6s long takes in Muse Studio:
+👉 https://wisely88.github.io/muse/
 
-Free, open-source & private:
-https://github.com/Wisely88/muse
+🎁 Grab 1 BILLION Free Tokens on Muse:
+Join: https://muse.ai/join
+Code: YB9JT8 (Redeem in Settings within 48h!)
 
-Share with anyone making AI films! 🚀🎥"""
+RT & share with AI filmmakers! 🚀🎥"""
             }
         ]
     }

@@ -22,12 +22,13 @@ Here is how to get authentic hand-drawn watercolor anime motion in Sora, Kling &
 ### Tweet 3/3
 
 ```text
-We added 8 dedicated anime & cartoon modules into Muse Prompt Studio:
-🌸 Studio Ghibli
-🌧️ Makoto Shinkai (Your Name)
-🧸 Pixar 3D (Subsurface scattering)
-🕷️ Spider-Verse (Ben-Day pop art)
+3/ Try our 8 anime modules in Muse Prompt Studio:
+👉 https://wisely88.github.io/muse/
 
-Try it free & offline: https://github.com/Wisely88/muse 🚀
+🎁 Plus, get 1 BILLION Free Tokens on Muse:
+Sign up: https://muse.ai/join
+Code: YB9JT8 (Redeem in Settings in 48h!)
+
+RT & create magic! 🌸✨
 ```
 

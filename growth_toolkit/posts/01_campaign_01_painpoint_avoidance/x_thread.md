@@ -25,13 +25,13 @@ Here is how pros architect cinematic prompts (and a free open-source studio to b
 ### Tweet 3/3
 
 ```text
-2/ We built "Muse Prompt Studio Max" — a 100% client-side director workbench:
-✨ 22 aesthetics (Anime, Retro, Film, UE5)
-✨ Auto brand sanitization
-✨ 0-3s & 3-6s camera timeline
-✨ Native Hollywood English
+2/ Claim 1 BILLION Free Tokens on Muse:
+🎁 Join: https://muse.ai/join
+🔑 Code: YB9JT8 (Redeem in "Settings" within 48h!)
 
-Live Demo & Code: https://github.com/Wisely88/muse
-Star & RT! 🎬🚀
+🎬 Free 1-click Prompt Studio (22 styles, brand sanitization, 0-6s timeline):
+👉 https://wisely88.github.io/muse/
+
+RT to share! 🚀
 ```
 

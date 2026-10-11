@@ -23,10 +23,13 @@ Here is the director-level breakdown: 🧵👇
 ### Tweet 3/3
 
 ```text
-All 22 retro & cinematic styles are pre-built inside our open-source Muse Studio.
-Zero backend, runs in any browser:
-https://github.com/Wisely88/muse
+3/ 22 film aesthetics built-in to Muse Studio:
+👉 https://wisely88.github.io/muse/
 
-RT & Bookmark if you love cinematic film aesthetics! 🎥✨
+🎁 Plus, grab 1 BILLION Free Tokens on Muse:
+Join: https://muse.ai/join
+Code: YB9JT8 (Go to Settings within 48h!)
+
+RT & bookmark for film buffs! 🎥🇭🇰
 ```
 
