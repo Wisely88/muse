@@ -234,6 +234,42 @@
       color: var(--text-muted);
     }
 
+    /* 风格分类筛选标签栏 */
+    .style-category-bar {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      margin-bottom: 10px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .style-category-bar::-webkit-scrollbar {
+      display: none;
+    }
+    .style-category-chip {
+      flex-shrink: 0;
+      padding: 5px 12px;
+      border-radius: var(--radius-xl);
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-sub);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .style-category-chip:hover {
+      border-color: #6d6d8c;
+      color: #fff;
+    }
+    .style-category-chip.active {
+      background: var(--brand-primary);
+      border-color: var(--brand-primary);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(124, 58, 237, 0.35);
+    }
+
     /* 风格选择卡片 - 自适应网格，按屏幕宽度自动排布 2列/3列/4列/6列 */
     .style-grid {
       display: grid;
@@ -853,14 +889,23 @@
             <span class="badge-number">1</span>
             画面风格与摄影机质感 (Style & Optics)
           </div>
-          <div class="card-subtext">选择电影级调色与胶片型号</div>
+          <div class="card-subtext">选择动画卡通、电影胶片、复古年代与次世代质感</div>
+        </div>
+
+        <!-- 风格分类过滤标签 -->
+        <div class="style-category-bar" id="styleCategoryBar">
+          <button type="button" class="style-category-chip active" data-cat="all" onclick="filterStyleCategory('all', this)">全部风格 (22)</button>
+          <button type="button" class="style-category-chip" data-cat="anime" onclick="filterStyleCategory('anime', this)">🎨 动画卡通 (8)</button>
+          <button type="button" class="style-category-chip" data-cat="retro" onclick="filterStyleCategory('retro', this)">📼 经典复古 (7)</button>
+          <button type="button" class="style-category-chip" data-cat="cinema" onclick="filterStyleCategory('cinema', this)">🎬 电影胶片 (4)</button>
+          <button type="button" class="style-category-chip" data-cat="scifi" onclick="filterStyleCategory('scifi', this)">🚀 科幻次世代 (3)</button>
         </div>
 
         <div class="style-grid" id="styleGrid">
           <!-- JS 动态注入 -->
         </div>
 
-        <input type="text" id="customStyle" placeholder="可补充自定义风格（例如：Kodak Vision3 500T 胶片颗粒、变形宽银幕横向拉丝蓝光斑、阿莱电影机色调）" />
+        <input type="text" id="customStyle" placeholder="可补充自定义风格（例如：新海诚光影粒子、吉卜力水彩笔触、皮克斯材质、阿莱电影机色调）" />
       </section>
 
       <!-- 2. 主体角色与特征 -->
@@ -1139,79 +1184,168 @@
   <div class="toast" id="toastMessage">已成功复制到剪贴板！</div>
 
   <script>
-    // --- 风格预设数据 (好莱坞胶片与经典年代复古美学升级) ---
+    // --- 风格预设数据 (22款涵盖动画卡通、胶片、复古年代、科幻次世代) ---
     const STYLES = [
+      // 🎨 动画与卡通 (Anime & Cartoon)
+      {
+        id: 'ghibli',
+        category: 'anime',
+        name: '🌿 宫崎骏·吉卜力手绘',
+        tagEn: 'Studio Ghibli anime aesthetic, Hayao Miyazaki directorial style, hand-drawn 2D animation, lush vibrant watercolor painted background, emotional summer nostalgia, whimsical fluffy clouds, Joe Hisaishi movie atmosphere, painterly scenery',
+        desc: '治愈手绘、吉卜力蓝天麦浪'
+      },
+      {
+        id: 'shinkai',
+        category: 'anime',
+        name: '🌧️ 新海诚·唯美光影动漫',
+        tagEn: 'Makoto Shinkai anime aesthetic, Your Name and Weathering With You style, luminous photorealistic skies, sparkling lens flare refractions, tear-drop rain reflections on wet ground, hyper-detailed emotional anime scenery',
+        desc: '你的名字/绝美光影雨后云霞'
+      },
+      {
+        id: 'pixar3d',
+        category: 'anime',
+        name: '🧸 迪士尼·皮克斯 3D',
+        tagEn: 'Pixar 3D animation style, Disney RenderMan engine, subsurface scattering skin and clothing shaders, exaggerated expressive character design, warm whimsical volumetric lighting, octane render, 8k cute 3D CGI',
+        desc: '皮克斯3D、细腻材质萌趣表情'
+      },
+      {
+        id: 'spiderverse',
+        category: 'anime',
+        name: '🕷️ 蜘蛛侠·美漫波普',
+        tagEn: 'Spider-Verse comic book animation style, halftone dots pattern, dynamic Ben-Day dots, chromatic aberration line art, pop-art color splash, kinetic motion lines, stylish comic graphic novel aesthetic',
+        desc: '平行宇宙、网点波普抽帧'
+      },
+      {
+        id: 'cel_anime',
+        category: 'anime',
+        name: '📺 90s 复古赛璐珞动漫',
+        tagEn: 'Classic 1990s retro anime style, vintage cel animation, Cowboy Bebop and Neon Genesis Evangelion aesthetic, hand-drawn film grain, rich saturated analog colors, authentic retro anime frame scan',
+        desc: '星际牛仔/EVA赛璐珞经典'
+      },
+      {
+        id: 'claymation',
+        category: 'anime',
+        name: '🧶 定格黏土动画',
+        tagEn: 'Tactile stop-motion claymation animation, handcrafted plasticine textures, Aardman and Coraline aesthetic, subtle physical fingerprint impressions, miniature puppet lighting, tactile 12fps movement feel',
+        desc: '手工黏土、指纹定格偶动画'
+      },
+      {
+        id: 'ink_wash',
+        category: 'anime',
+        name: '🌸 东方写意水墨国漫',
+        tagEn: 'Traditional Chinese ink wash animation aesthetic, poetic watercolor brush strokes, ethereal misty mountains and rivers, flowing calligraphy lines, Dunhuang artistic elegance, animated oriental masterpiece',
+        desc: '传统水墨写意、中国古风国漫'
+      },
+      {
+        id: 'french_comic',
+        category: 'anime',
+        name: '🖍️ 欧式绘本插画定格',
+        tagEn: 'European graphic novel style, vintage French storybook illustration, delicate pen and ink outlines, flat muted pastel colors, whimsical storybook charm, artistic indie animation aesthetic',
+        desc: '法式童话绘本、手绘素描质感'
+      },
+
+      // 📼 经典复古年代 (Retro Decades)
       {
         id: 'retro2000s',
+        category: 'retro',
         name: '📼 2000年代青春唯美',
         tagEn: 'Nostalgic 2000s cinematic aesthetic, poetic youth film mood, warm film grain, dreamy golden lens flares, 35mm film stock, Arri Alexa color grade',
         desc: '青春大片、唯美晚霞'
       },
       {
         id: 'hk90s',
+        category: 'retro',
         name: '🇭🇰 80-90s 港片黄金期',
         tagEn: '1990s Hong Kong cinema aesthetic, Wong Kar-wai style, Christopher Doyle cinematography, step-printing slow shutter motion blur, neon green and warm amber hue, rich 35mm celluloid film grain, handheld camera',
         desc: '王家卫慢门抽帧霓虹'
       },
       {
         id: 'vhs90s',
+        category: 'retro',
         name: '📹 90年代VHS录像带',
         tagEn: 'Authentic 1990s VHS home camcorder footage, magnetic tape scanlines, analog color bleed, subtle static noise, soft fuzzy edges, 4:3 aspect ratio feel, raw nostalgic home video',
         desc: '磁带复古、家用录像'
       },
       {
         id: 'retro70s',
+        category: 'retro',
         name: '🎞️ 70年代暖调柯达',
         tagEn: '1970s vintage Hollywood cinema, Kodachrome 64 film stock, warm earthy mustard and golden amber palette, vintage Panavision C-series anamorphic lenses, sun-drenched retro film look',
         desc: '加州暖阳公路片'
       },
       {
         id: 'noir60s',
+        category: 'retro',
         name: '🕶️ 60年代新浪潮黑白',
         tagEn: '1960s French New Wave cinema, Jean-Luc Godard style, timeless 35mm black and white film, high-contrast silver gelatin print, deep rich blacks, luminous whites, natural poetic lighting',
         desc: '法国新浪潮银盐经典'
       },
       {
         id: 'y2k_dv',
+        category: 'retro',
         name: '💿 Y2K 千禧早期数码DV',
         tagEn: 'Early 2000s Y2K aesthetic, Sony DCR-VX1000 MiniDV camcorder, raw early digital video artifacts, fish-eye perspective feel, nostalgic pop music video vibe, soft pixel bloom',
         desc: 'MiniDV 街头滑板MV'
       },
       {
         id: 'silent20s',
+        category: 'retro',
         name: '🎩 1920年代无声默片',
         tagEn: '1920s vintage silent film era, hand-cranked camera shutter speed jitter, sepia tone monochrome, authentic celluloid dust and scratches, heavy vignette, historical cinematic artifact',
         desc: '胶片划痕、手摇跳动'
       },
-      {
-        id: 'kodak500t',
-        name: '🎞️ 柯达电影胶片 (500T)',
-        tagEn: 'Shot on Kodak Vision3 500T 5219, rich organic film grain, authentic halation on highlights, natural color saturation, anamorphic horizontal lens flare',
-        desc: '大师胶片、红边光晕'
-      },
+
+      // 🎬 电影与胶片 (Cinematic & Film)
       {
         id: 'cinematic',
+        category: 'cinema',
         name: '🎬 好莱坞现代院线',
         tagEn: 'Cinematic 35mm film stock, anamorphic widescreen, Arri Alexa Mini LF, Master Prime lenses, cinematic color grading, shallow depth of field, sharp focus, 8k uhd',
         desc: '阿莱电影机院线质感'
       },
       {
+        id: 'kodak500t',
+        category: 'cinema',
+        name: '🎞️ 柯达电影胶片 (500T)',
+        tagEn: 'Shot on Kodak Vision3 500T 5219, rich organic film grain, authentic halation on highlights, natural color saturation, anamorphic horizontal lens flare',
+        desc: '大师胶片、红边光晕'
+      },
+      {
+        id: 'commercial',
+        category: 'cinema',
+        name: '💎 高端商业大片',
+        tagEn: 'Luxury commercial product aesthetics, RED V-Raptor 8k, pristine studio lighting, crisp razor-sharp details, elegant slow motion, high-end color grading',
+        desc: '奢华广告质感'
+      },
+      {
         id: 'lifestyle',
+        category: 'cinema',
         name: '📱 手机真实街拍 (POV)',
         tagEn: 'Raw candid lifestyle video, iPhone 15 Pro footage, authentic natural lighting, handheld POV vlog style, casual realism, subtle motion blur, unedited color science',
         desc: '手机实拍Vlog'
       },
+
+      // 🚀 科幻与次世代 (Sci-Fi & Digital)
       {
         id: 'cyberpunk',
+        category: 'scifi',
         name: '🌆 赛博科幻未来',
         tagEn: 'Futuristic sci-fi cyberpunk aesthetic, Blade Runner style, high-contrast neon atmosphere, volumetric rain haze, holographic reflections, anamorphic flares',
         desc: '霓虹雨夜未来'
       },
       {
-        id: 'commercial',
-        name: '💎 高端商业大片',
-        tagEn: 'Luxury commercial product aesthetics, RED V-Raptor 8k, pristine studio lighting, crisp razor-sharp details, elegant slow motion, high-end color grading',
-        desc: '奢华广告质感'
+        id: 'ue5_game',
+        category: 'scifi',
+        name: '🎮 虚幻5·次世代CG',
+        tagEn: 'Unreal Engine 5 cinematic render, Lumen global illumination, Nanite micro-polygon geometry, ray-traced reflections, photorealistic AAA game cutscene, hyper-detailed 3D character, 8k cinematic',
+        desc: 'UE5次世代、光线追踪过场CG'
+      },
+      {
+        id: 'vaporwave',
+        category: 'scifi',
+        name: '⚡ 蒸汽波赛博故障',
+        tagEn: 'Retro 1980s synthwave vaporwave aesthetic, glowing neon grid, CRT monitor scanlines, magenta and cyan color palette, chromatic glitch artifacts, lo-fi nostalgic dreamscape',
+        desc: '霓虹网格、蒸汽波迷幻复古'
       }
     ];
 
@@ -1219,24 +1353,91 @@
       subject: [
         '文质彬彬男高中生', '白色T恤配休闲裤', '手持透明雨伞', '经典白色球鞋',
         '戴中框眼镜', '穿紫色连衣裙的女孩', '孤胆风衣探员', '高定时装超模',
+        '吉卜力草帽少女', '水手服动漫女孩', '皮克斯萌趣小机器人', '平行宇宙连帽衫英雄', '一袭白衣水墨剑客',
         '王家卫复古风衣男子', '90年代背带裤少女', '70年代牛仔墨镜旅人', 'Y2K滑板少年'
       ],
       setting: [
         '夏日雷雨过后城市街道', '90年代香港街头繁体字霓虹招牌', '夕阳透过雨后云层洒下金色晚霞',
+        '吉卜力风治愈麦浪电车', '新海诚雨后天桥倒影晚霞', '皮克斯暖光阁楼温室', '美漫波普网点都会', '水墨烟雨奇峰峡谷',
         '90年代小镇老洋房走廊', '70年代加州荒漠公路', '60年代巴黎塞纳河畔石桥',
         '潮湿反光积水路面', '两旁商店在雨季灯火通明', '公园门口', '午后暖阳咖啡馆'
       ],
       action: [
         '撑伞步伐在水洼溅起水滴', '慢门抽帧拖影中点烟深思', '跑过阳光走廊俏皮招手',
+        '草坡奔跑追逐蒲公英', '仰望天空雨滴折射金光', '机械手托起花朵眨眼', '高楼俯冲波普抽帧后空翻', '孤舟蓑笠长袖随风飘逸',
         '靠在红色敞篷跑车旁远眺', '走向公园门口女孩焦急等待', '缓步向前转角回眸',
         '倒出热咖啡蒸汽升腾', '狂风中疾速奔跑衣角翻飞'
       ]
     };
 
     const PRESETS = [
+      // 🎨 经典动画与卡通灵感
+      {
+        title: '🌿 吉卜力夏日田园手绘动画',
+        style: 'ghibli',
+        category: 'anime',
+        subject: '戴着编织草帽、身穿白色无袖连衣裙的小女孩，怀抱一只毛茸茸的白色小猫，回眸露出灿烂纯真的笑容',
+        setting: '盛夏吉卜力风治愈田园，碧绿摇曳的麦浪丘陵，远处是奔向蔚蓝晴空的复古海边电车与棉花糖般的积雨云',
+        action: '微风吹拂草帽缎带轻抚脸庞，小女孩欢快地在草坡上奔跑追逐飘飞的蒲公英，脚步轻盈雀跃',
+        framing: 'A cinematic medium tracking shot',
+        movement: 'smoothly tracks alongside the subject\'s movement',
+        lighting: 'Warm golden hour sunlight piercing through storm clouds, vibrant amber and violet sunset afterglow on wet reflective asphalt',
+        audio: 'gentle summer breeze rustling tall grass, distant train horn echoing, cheerful cicadas chirping'
+      },
+      {
+        title: '🌧️ 新海诚绝美光影雨后动漫',
+        style: 'shinkai',
+        category: 'anime',
+        subject: '身穿蓝白校服的水手服少女，微风吹拂发丝，眼神清澈而充满期盼，双手轻扶伞柄',
+        setting: '夏日暴雨初歇的东京城市人行天桥，湿漉漉的水坑倒映着蔚蓝破云天穹与夕阳晚霞，半空悬挂着绚烂彩虹',
+        action: '少女驻足扶着天桥栏杆仰望天空，晶莹雨滴顺着伞尖滑落，夕阳金光穿透云层折射出梦幻光芒与闪烁耀斑',
+        framing: 'A cinematic medium tracking shot',
+        movement: 'slowly tilts up to reveal dramatic sky and clouds',
+        lighting: 'Warm golden hour sunlight piercing through storm clouds, vibrant amber and violet sunset afterglow on wet reflective asphalt',
+        audio: 'gentle raindrops dripping from railing, distant train rumbling across bridge, soft ambient wind'
+      },
+      {
+        title: '🧸 皮克斯 3D 暖萌小机器人',
+        style: 'pixar3d',
+        category: 'anime',
+        subject: '圆滚滚、拥有大眼睛显示屏的复古生锈小清洁机器人，金属外壳带有细腻做旧纹理，神态呆萌好奇',
+        setting: '充满杂物与多肉植物的阁楼阳光温室，尘埃微粒在温暖的丁达尔丁达尔光束中缓缓浮动',
+        action: '小机器人小心翼翼地用机械手托起一朵刚绽放的黄色蒲公英，大眼睛眨了眨，露出温暖惊喜的表情',
+        framing: 'A close-up shot focusing on facial emotions',
+        movement: 'performs a slow forward push-in',
+        lighting: 'Warm whimsical volumetric studio lighting, rich subsurface scattering',
+        audio: 'cute robotic bleeps and chirps, soft mechanical servo whirring, gentle ambient room tone'
+      },
+      {
+        title: '🕷️ 平行宇宙美漫波普动态',
+        style: 'spiderverse',
+        category: 'anime',
+        subject: '身穿撞色连帽卫衣与高帮板鞋的年轻英雄，佩戴半透明护目镜，身姿矫健充满爆发力',
+        setting: '高空反转俯瞰的繁华漫画大都会，四周环绕半色调网点印刷纹理与跃动波普动态视觉元素',
+        action: '纵身从摩天大楼天台俯冲下坠后敏捷后空翻，伴随定格抽帧与红蓝分色色差流动，在风中极速穿梭',
+        framing: 'A dynamic Dutch angle action shot',
+        movement: 'swoops forward dynamically in FPV drone style',
+        lighting: 'Cyberpunk neon lighting, vibrant magenta and cyan reflections',
+        audio: 'dynamic wind rushing, stylized comic sound-fx whoosh, punchy hip-hop synth beat'
+      },
+      {
+        title: '🌸 大美中华水墨写意国漫',
+        style: 'ink_wash',
+        category: 'anime',
+        subject: '一袭白衣胜雪的孤舟蓑笠剑客，手持青竹长竿与古朴佩剑，身姿挺拔出尘',
+        setting: '烟波浩渺的千山江雪与奇峰怪石，浓淡干湿的水墨焦墨山水画卷在云雾中舒展流动',
+        action: '孤舟顺水穿行在水墨峡谷之间，剑客长袖随风飘逸，惊起两岸一行白鹭破雾飞向远山',
+        framing: 'A cinematic wide establishing shot',
+        movement: 'performs a slow epic panoramic pan',
+        lighting: 'Volumetric cinematic fog, dramatic chiaroscuro and atmospheric rim light',
+        audio: 'flowing river ripples, distant melancholic bamboo flute melody, gentle bird wings flapping'
+      },
+
+      // 📼 经典复古与院线大片
       {
         title: '2000年代雨后晚霞少年',
         style: 'retro2000s',
+        category: 'retro',
         subject: '身穿白色T恤、休闲长裤、经典白色球鞋的文质彬彬男中学生，戴着中框眼镜，手持雨伞',
         setting: '夏天午后雷雨过后的城市街道，夕阳穿透雨后云层照射在大地上，半边天空被浪漫晚霞笼罩，潮湿柏油路面倒映天空，道路两旁商店灯火通明',
         action: '少年迈着缓缓步伐，在浅水洼中溅起细密水滴，朝着公园门口走去；公园门口有一位身穿紫色连衣裙的美丽女孩在焦急等待',
@@ -1248,6 +1449,7 @@
       {
         title: '80-90年代香港雨夜街头',
         style: 'hk90s',
+        category: 'retro',
         subject: '身着复古深咖色风衣的忧郁男子，微卷碎发被雨水打湿，神情落寞深沉',
         setting: '90年代香港雨夜街头，狭窄逼仄的深水埗街巷，头顶错落悬挂的繁体字粉绿霓虹招牌在雨雾中晕染，潮湿沥青路面流淌着彩色倒影',
         action: '男子在慢门抽帧拖影中穿过潮湿拥挤的街头，在闪烁的公用电话亭旁驻足点烟，烟雾在霓虹光晕中缓缓升腾扩散',
@@ -1259,6 +1461,7 @@
       {
         title: '90年代夏日午后家庭录像',
         style: 'vhs90s',
+        category: 'retro',
         subject: '穿着复古印花短袖和牛仔背带裤的年轻女孩，扎着双马尾，笑容灿烂真实',
         setting: '90年代夏日阳光明媚的小镇老洋房庭院，门前草坪郁郁葱葱，老式电风扇在走廊呼呼转动，画面右下角带有复古红色时间戳',
         action: '女孩抱着冰镇西瓜欢快地跑过阳光斑驳的走廊，对着手持镜头俏皮地招手欢笑，伴随轻微模拟磁带抖动和色彩溢出',
@@ -1270,6 +1473,7 @@
       {
         title: '70年代加州暖阳公路大片',
         style: 'retro70s',
+        category: 'retro',
         subject: '身穿复古水洗牛仔夹克与麂皮靴的年轻旅人，戴着复古飞行员墨镜，长发随风扬起',
         setting: '70年代加利福尼亚金黄烈日下的荒漠公路，两旁矗立着巨型仙人掌与复古加油站，热浪在柏油路面形成海市蜃楼蜃景',
         action: '旅人靠在一辆复古红色敞篷野马跑车旁远眺夕阳地平线，镜头缓慢拉远，金黄色逆光与柯达克罗姆胶片质感将整片旷野染成暖金琥珀色',
@@ -1281,6 +1485,7 @@
       {
         title: '60年代巴黎黑白新浪潮',
         style: 'noir60s',
+        category: 'retro',
         subject: '身着黑色高领毛衣与复古贝雷帽的年轻哲思青年，神情冷峻纯粹，目光深邃',
         setting: '60年代巴黎塞纳河畔石桥，岸边散落着老书摊与法式梧桐树，微雨后湿润的石板路泛着高反差银盐光泽',
         action: '青年手插大衣口袋沿着河畔石栏缓缓独行，偶尔驻足凝望河水倒影，手持黑白镜头伴随纪实呼吸感跟拍，光影呈现深邃纯黑与明亮银白的诗意反差',
@@ -1292,6 +1497,7 @@
       {
         title: 'Y2K 千禧年初街头滑板',
         style: 'y2k_dv',
+        category: 'retro',
         subject: '身穿宽松宽腿滑板工装裤和超大连帽衫的Y2K街头滑手，佩戴有线头戴式耳机',
         setting: '2000年代初废弃城市滑板广场，斑驳的水泥弧面涂鸦墙，阳光直射带有早期数码MiniDV的轻微过曝高光溢出',
         action: '滑手贴地飞驰腾空完成一次流畅的尖翻跳跃动作，超广角鱼眼镜头贴地紧贴跟拍，伴随轮滑与粗糙地面的清脆刮擦摩擦',
@@ -1303,6 +1509,7 @@
       {
         title: '科幻雨夜独行刺客',
         style: 'cyberpunk',
+        category: 'scifi',
         subject: '身着哑光黑战术斗篷的孤胆探员，佩戴发蓝光的半透明单目目镜',
         setting: '暴雨倾盆的赛博都市狭窄巷弄，地面满是积水与粉青色霓虹反光',
         action: '涉水疾行溅起水花，随后在废弃拐角骤然驻足，警惕拔出腰间发光武器',
@@ -1314,6 +1521,7 @@
       {
         title: '咖啡馆生活真实 Vlog',
         style: 'lifestyle',
+        category: 'cinema',
         subject: '年轻文艺女性，身着米白色宽松羊绒毛衣，戴细黑框眼镜，神情惬意',
         setting: '阳光穿透玻璃窗的复古木质街角咖啡馆，窗外绿植光影斑驳',
         action: '双手捧起热拿铁轻抿一口，嘴角带笑，转头望向窗外树影，神态自然松弛',
@@ -1325,6 +1533,7 @@
       {
         title: '奢华香水商业大片',
         style: 'commercial',
+        category: 'cinema',
         subject: '剔透无瑕的切割水晶香水瓶，镶嵌金铭牌，瓶内液体流转金砂光泽',
         setting: '极简深黑镜面水台，周围漂浮深红丝绒玫瑰花瓣与悬浮水雾微粒',
         action: '一滴晶莹水珠从高空垂直坠落，正中香水喷头，激荡起微观环形涟漪波纹',
@@ -1336,6 +1545,7 @@
       {
         title: '阿尔卑斯雪峰自然纪实',
         style: 'cinematic',
+        category: 'cinema',
         subject: '巍峨连绵的皑皑雪山群峰，陡峭的冰川岩壁与狂风卷起的雪尘',
         setting: '阿尔卑斯高海拔无人雪域，头顶是纯净湛蓝的天穹',
         action: '狂风卷起如白浪般翻涌的漫天雪雾，向着山脊边缘奔涌流逝',
@@ -1354,6 +1564,43 @@
     // 工业级双向电影语义翻译引擎 (Zero Chinese Leak)
     // ==========================================
     const VOCABULARY = [
+      // 动画卡通与艺术风格 (Anime, Cartoon, 3D CGI & Art)
+      [/吉卜力夏日田园手绘动画|吉卜力手绘动画|吉卜力手绘|吉卜力动画|吉卜力风格|吉卜力|宫崎骏风格|宫崎骏/g, 'Studio Ghibli anime aesthetic, Hayao Miyazaki directorial style, hand-drawn 2D animation, lush vibrant watercolor painted background, emotional summer nostalgia'],
+      [/新海诚绝美光影雨后动漫|新海诚绝美光影|新海诚唯美光影动漫|新海诚动漫|新海诚风格|新海诚|你的名字|天气之子/g, 'Makoto Shinkai anime aesthetic, luminous photorealistic skies, sparkling lens flare refractions, tear-drop rain reflections, hyper-detailed emotional anime scenery'],
+      [/皮克斯3D暖萌小机器人|皮克斯3D暖萌角色动画|皮克斯3D动画|皮克斯动画|皮克斯风格|皮克斯|迪士尼3D|迪士尼动画/g, 'Pixar 3D animation style, Disney RenderMan engine, subsurface scattering skin and clothing shaders, exaggerated expressive character design, warm whimsical volumetric lighting, 8k 3D CGI'],
+      [/平行宇宙美漫波普动态|蜘蛛侠平行宇宙美漫波普|美漫波普风格|美漫波普|平行宇宙风格|平行宇宙|美漫风格|美漫/g, 'Spider-Verse comic book animation style, halftone dots pattern, dynamic Ben-Day dots, chromatic aberration line art, pop-art color splash, kinetic motion lines'],
+      [/90s复古赛璐珞动漫|复古赛璐珞动漫|赛璐珞动漫|赛璐珞风格|赛璐珞|星际牛仔|EVA风格/g, 'classic 1990s retro anime style, vintage cel animation, Cowboy Bebop and Evangelion aesthetic, hand-drawn film grain, rich saturated analog colors'],
+      [/定格黏土动画|定格粘土动画|黏土动画|粘土动画|阿德曼/g, 'tactile stop-motion claymation animation, handcrafted plasticine textures, Aardman and Coraline aesthetic, subtle physical fingerprint impressions, tactile 12fps movement'],
+      [/大美中华水墨写意国漫|写意水墨国漫|东方水墨国漫|传统水墨国漫|水墨动画|水墨国风|水墨国漫|水墨写意/g, 'traditional Chinese ink wash animation aesthetic, poetic watercolor brush strokes, ethereal misty mountains and rivers, flowing calligraphy lines, animated oriental masterpiece'],
+      [/欧式绘本插画定格|法式绘本插画|欧式绘本|法式漫画|童话绘本插画|绘本插画/g, 'European graphic novel style, vintage French storybook illustration, delicate pen and ink outlines, flat muted pastel colors, whimsical storybook charm'],
+      [/虚幻5次世代游戏CG|虚幻引擎5|虚幻5|次世代游戏CG|次世代游戏|游戏CG/g, 'Unreal Engine 5 cinematic render, Lumen global illumination, Nanite micro-polygon geometry, ray-traced reflections, AAA game cutscene, hyper-detailed 3D character'],
+      [/蒸汽波赛博故障|蒸汽波风格|蒸汽波|赛博故障|故障艺术/g, 'retro 1980s synthwave vaporwave aesthetic, glowing neon grid, CRT monitor scanlines, magenta and cyan color palette, chromatic glitch artifacts'],
+
+      // 动画角色与具象元素
+      [/戴着编织草帽、身穿白色无袖连衣裙的小女孩|戴着草帽、身穿白色无袖连衣裙的小女孩|吉卜力草帽少女|草帽少女/g, 'a sweet young anime girl wearing a woven straw hat with ribbon and a white sleeveless dress'],
+      [/怀抱一只毛茸茸的白色小猫|毛茸茸的白色小猫|白色小猫/g, 'holding a fluffy white kitten with curious eyes in her arms'],
+      [/回眸露出灿烂纯真的笑容|露出灿烂纯真的笑容|纯真的笑容/g, 'turning back with a radiant and innocent cheerful smile'],
+      [/身穿蓝白校服的水手服少女|水手服少女|水手服动漫女孩|水手服/g, 'a Japanese anime high school girl in a crisp blue-and-white sailor uniform with gentle wind-blown hair'],
+      [/圆滚滚、拥有大眼睛显示屏的复古生锈小清洁机器人|皮克斯萌趣小机器人|圆滚滚小清洁机器人|生锈小清洁机器人/g, 'an adorable round vintage rusty cleaning robot with large expressive LED monitor eyes'],
+      [/金属外壳带有细腻做旧纹理/g, 'weathered metal chassis with charming retro patina texture'],
+      [/小心翼翼地用机械手托起一朵刚绽放的黄色蒲公英/g, 'carefully holding a newly bloomed yellow dandelion with delicate robotic pincers'],
+      [/身穿撞色连帽卫衣与高帮板鞋的年轻英雄|平行宇宙连帽衫英雄/g, 'a stylish young superhero in a color-blocked hoodie and high-top sneakers, wearing translucent goggles'],
+      [/一袭白衣胜雪的孤舟蓑笠剑客|白衣胜雪的孤舟蓑笠剑客|一袭白衣水墨剑客|孤舟蓑笠剑客|水墨剑客/g, 'a poetic Chinese swordsman in flowing snow-white traditional robes and a conical bamboo rain hat'],
+      [/青竹长竿与古朴佩剑/g, 'holding a green bamboo pole and an ancient ornate sword'],
+      [/盛夏吉卜力风治愈田园|治愈田园|麦浪丘陵/g, 'sunlit idyllic countryside hills with swaying green wheat waves under azure summer sky'],
+      [/奔向蔚蓝晴空的复古海边电车|复古海边电车|海边电车/g, 'a vintage coastal train traveling beside glittering blue sea under majestic towering cumulonimbus clouds'],
+      [/棉花糖般的积雨云|积雨云/g, 'fluffy white anime cumulonimbus clouds against deep sky'],
+      [/飘飞的蒲公英|蒲公英/g, 'floating dandelion seeds drifting in summer breeze'],
+      [/草坡上奔跑追逐飘飞的蒲公英|草坡奔跑追逐蒲公英/g, 'running joyfully across the grassy hill chasing floating dandelion seeds'],
+      [/东京城市人行天桥|人行天桥/g, 'a modern Tokyo pedestrian overpass after summer rain'],
+      [/半空悬挂着绚烂彩虹|绚烂彩虹|彩虹/g, 'a brilliant double rainbow arching across clearing storm sky'],
+      [/阁楼阳光温室/g, 'sunlit attic greenhouse filled with vintage knick-knacks and lush succulents, dust motes dancing in sunbeams'],
+      [/半色调网点印刷纹理/g, 'vintage halftone Ben-Day dots print texture and kinetic comic graphic accents'],
+      [/千山江雪与奇峰怪石|水墨峡谷/g, 'misty river landscape with towering misty mountain crags and flowing waterfalls rendered in ink wash'],
+      [/孤舟顺水穿行在水墨峡谷之间/g, 'a solitary wooden boat gliding smoothly through misty ink-wash canyon waters'],
+      [/惊起两岸一行白鹭破雾飞向远山|一行白鹭破雾飞向远山|一行白鹭/g, 'startling a flock of white egrets bursting through mountain mist toward distant ink peaks'],
+      [/纵身从摩天大楼天台俯冲下坠后敏捷后空翻/g, 'leaping from skyscraper rooftop into a fluid acrobatic backflip'],
+
       // 80-90年代香港电影与王家卫风格
       [/80-90年代港片|90年代港片|80年代港片|港片黄金期|港片风格|港风|王家卫风格|王家卫/g, '1990s Hong Kong cinema aesthetic, Wong Kar-wai style, Christopher Doyle cinematography'],
       [/慢门抽帧拖影|慢门抽帧|抽帧拖影|抽帧/g, 'step-printing slow shutter motion blur, hypnotic frame-lag'],
@@ -1467,10 +1714,28 @@
       return t;
     }
 
-    // 初始化页面
-    function init() {
+    let currentStyleCategory = 'all';
+
+    function filterStyleCategory(cat, btnEl) {
+      currentStyleCategory = cat;
+      document.querySelectorAll('.style-category-chip').forEach(c => c.classList.remove('active'));
+      if (btnEl) {
+        btnEl.classList.add('active');
+      } else {
+        const targetBtn = document.querySelector(`.style-category-chip[data-cat="${cat}"]`);
+        if (targetBtn) targetBtn.classList.add('active');
+      }
+      renderStyleGrid();
+    }
+
+    function renderStyleGrid() {
       const grid = document.getElementById('styleGrid');
-      STYLES.forEach(s => {
+      if (!grid) return;
+      grid.innerHTML = '';
+      const list = currentStyleCategory === 'all' 
+        ? STYLES 
+        : STYLES.filter(s => s.category === currentStyleCategory);
+      list.forEach(s => {
         const item = document.createElement('div');
         item.className = 'style-item' + (s.id === currentStyleId ? ' selected' : '');
         item.id = 'style_' + s.id;
@@ -1481,6 +1746,52 @@
         `;
         grid.appendChild(item);
       });
+    }
+
+    function selectStyle(id, autoSwitchCategory = true) {
+      currentStyleId = id;
+      const sObj = STYLES.find(s => s.id === id);
+      if (autoSwitchCategory && sObj && currentStyleCategory !== 'all' && sObj.category !== currentStyleCategory) {
+        filterStyleCategory('all');
+      } else {
+        document.querySelectorAll('.style-item').forEach(el => el.classList.remove('selected'));
+        const activeEl = document.getElementById('style_' + id);
+        if (activeEl) activeEl.classList.add('selected');
+      }
+      updatePrompt();
+    }
+
+    function populatePresetSelect() {
+      const sel = document.getElementById('presetSelect');
+      if (!sel) return;
+      sel.innerHTML = '<option value="" disabled selected>✨ 官方灵感模版</option>';
+      const groups = [
+        { key: 'anime', label: '🎨 经典动画与卡通灵感' },
+        { key: 'retro', label: '📼 经典复古年代大片' },
+        { key: 'cinema', label: '🎬 现代电影与纪实大片' },
+        { key: 'scifi', label: '🚀 科幻未来与次世代' }
+      ];
+      groups.forEach(g => {
+        const groupEl = document.createElement('optgroup');
+        groupEl.label = g.label;
+        PRESETS.forEach((p, idx) => {
+          if (p.category === g.key) {
+            const opt = document.createElement('option');
+            opt.value = idx;
+            opt.textContent = p.title;
+            groupEl.appendChild(opt);
+          }
+        });
+        if (groupEl.children.length > 0) {
+          sel.appendChild(groupEl);
+        }
+      });
+    }
+
+    // 初始化页面
+    function init() {
+      renderStyleGrid();
+      populatePresetSelect();
 
       renderChips('subjectChips', CHIPS.subject, 'subjectInput');
       renderChips('settingChips', CHIPS.setting, 'settingInput');
@@ -1520,18 +1831,6 @@
         };
         container.appendChild(chip);
       });
-    }
-
-    function selectStyle(id) {
-      currentStyleId = id;
-      STYLES.forEach(s => {
-        const el = document.getElementById('style_' + s.id);
-        if (el) {
-          if (s.id === id) el.classList.add('selected');
-          else el.classList.remove('selected');
-        }
-      });
-      updatePrompt();
     }
 
     function toggleTimeline(checked) {
@@ -1699,7 +1998,7 @@
         zh.push(`【动作动态】${state.action}（运镜方式: ${state.movement}）`);
       }
       zh.push(`【光影基调】${state.lighting}`);
-      zh.push(`【胶片风格】${styleObj.name}${state.customStyle ? '，' + state.customStyle : ''}`);
+      zh.push(`【视觉风格】${styleObj.name}${state.customStyle ? '，' + state.customStyle : ''}`);
       if (state.audio) zh.push(`【原生音效】${state.audio}`);
       document.getElementById('promptZhOutput').innerText = zh.join('\n');
 
@@ -1714,7 +2013,7 @@
 | **动作演变 (Motion)** | ${state.action || '未指定动作'} |
 | **摄影机运镜 (Camera)** | \`${state.movement}\` |
 | **色彩与光影 (Lighting)** | ${state.lighting} |
-| **胶片调色 (Aesthetics)** | ${styleObj.name} (${styleObj.tagEn}) |
+| **视觉美学 (Aesthetics)** | ${styleObj.name} (${styleObj.tagEn}) |
 | **原生声音设计 (Audio)** | ${state.audio || '无原生声音'} |
 | **画幅比例 (Ratio)** | \`${state.aspectRatio}\` |
 
