@@ -1,0 +1,174 @@
+{
+  "generated_at": "2026-10-11T14:23:25.090765",
+  "campaign_count": 4,
+  "campaigns": [
+    {
+      "id": "campaign_01_painpoint_avoidance",
+      "topic": "避坑痛点 · 提升出片率",
+      "target_audience": "经常生成僵硬、塑料感、被风控视频的小白创作者",
+      "xhs": {
+        "title": "别再乱写Prompt了！90%人AI视频翻车的4个致命误区🔥",
+        "subtitle": "好莱坞导演级视频提示词黄金架构拆解",
+        "video_script": "【0-5s 黄金前黄金秒 · 痛点抓取】\n（画面：左边放一个动作抽搐变形的AI失败视频，打上巨大红叉❌；右边放电影级丝滑雨后晚霞推轨镜头，打上绿色勾勾✅）\n口播：“你生成的AI视频是不是总像PPT幻灯片，人物僵硬、运镜抽搐？别怪Sora和可灵模型不行，是你提示词从第一句就写错了！”\n\n【5-18s 核心误区拆解 · 权威感】\n（画面：分屏展示四大雷区文字动画）\n口播：“记住这三大必踩雷区：第一，中文直翻，关键细节被大模型严重吃词；第二，堆砌‘唯美、真实、大片’这种主观形容词，AI完全听不懂；第三，带有阿迪达斯等真实品牌，直接被安全审查拦截！”\n\n【18-35s 神器亮相 · 7大黄金公式】\n（画面：展示 Muse 提示词工坊 Studio Max 的界面操作，一键点选风格与运镜）\n口播：“真正专业的电影导演都在用这个公式：[镜头景别] + [主体面料] + [环境纵深] + [物理动态] + [视觉风格] + [光影冷暖] + [原生音效]。不仅自动清洗品牌违规词，还能一键生成纯正地道的好莱坞英文Prompt和长镜头分镜！”\n\n【35-45s 行动号召 CTA · 评论区引流】\n（画面：展示评论区引导弹窗与高清成片）\n口播：“工具和全套分镜预设我已经全部打包好了，评论区扣【提示词】或【666】，我把在线体验地址和一键部署包发你，赶紧收藏开练！”",
+        "post_body": "玩了这么久 AI 视频生成，你是不是也经常遇到：\n❌ 动作一动就崩，人物四肢扭曲\n❌ 画面塑料感极强，像 20 年前的劣质特效\n❌ 中文喂给海外模型，出来的效果风马牛不相及\n\n别慌！真正的高阶玩家早就不用大白话写词了。今天拆解好莱坞工业级的【7大视频黄金提示词公式】：\n\n📐 1. 镜头景别 (Framing)：Cinematic medium tracking shot（拒绝静止机位）\n👤 2. 主体物理 (Subject)：服装面料、随身配饰、神态微表情（规避主观词）\n🌆 3. 环境纵深 (Setting)：雨后积水反光、视线景深、空气透视\n🏃 4. 动作演变 (Motion)：步伐溅起细密水花、转角回眸（指定物理动词）\n🎬 5. 视觉美学 (Aesthetics)：阿莱电影机35mm / 柯达500T / 王家卫抽帧\n💡 6. 光影氛围 (Lighting)：金色晚霞逆光、丁达尔光束、冷暖对冲\n🔊 7. 原生音效 (Audio)：脚步踏水声、远方闷雷、城市白噪音\n\n✨ 我们还把这套逻辑做成了纯前端离线小工具【Muse 视频提示词工坊】！\n- 支持 22 款顶级影视/二次元风格\n- 自动版权清洗（把阿迪等词转为物理描述）\n- 支持 0-3s / 3-6s 长镜头时序分镜\n\n🎁 评论区留言【提示词】或【666】，无偿分享在线体验入口和一键离线部署包！👇",
+        "tags": [
+          "#AI视频",
+          "#提示词工程",
+          "#Sora提示词",
+          "#RunwayGen3",
+          "#可灵AI",
+          "#即梦AI",
+          "#AI生产力工具",
+          "#自媒体干货",
+          "#神仙工具",
+          "#视频剪辑"
+        ],
+        "comment_hook": "想要在线体验网址和单页部署包的小伙伴，评论区扣【666】，我逐个私发给大家！",
+        "images": [
+          "xhs_cover.jpg",
+          "xhs_slide2.jpg"
+        ]
+      },
+      "x_thread": [
+        {
+          "tweet_num": 1,
+          "text": "🚨 Stop writing AI video prompts in broken sentences!\n\nIf your Sora, Runway Gen-3, or Kling videos look like stiff PPTs, you're missing the Hollywood 7-part director formula.\n\nHere is how pros architect cinematic prompts (and a free open-source studio to build them) 🧵👇"
+        },
+        {
+          "tweet_num": 2,
+          "text": "1/ The Golden Video Formula:\n• Framing: [Shot type & optics]\n• Subject: [Garments & physical textures]\n• Space: [Atmospheric depth & reflections]\n• Motion: [Action evolution + tracking]\n• Aesthetic: [35mm / Kodak 500T / Ghibli]\n• Lighting & Audio: [Volumetric + Sound]"
+        },
+        {
+          "tweet_num": 3,
+          "text": "2/ We built \"Muse Prompt Studio Max\" — a 100% client-side director workbench:\n✨ 22 aesthetics (Anime, Retro, Film, UE5)\n✨ Auto brand sanitization\n✨ 0-3s & 3-6s camera timeline\n✨ Native Hollywood English\n\nLive Demo & Code: https://github.com/Wisely88/muse\nStar & RT! 🎬🚀"
+        }
+      ]
+    },
+    {
+      "id": "campaign_02_anime_ghibli_shinkai",
+      "topic": "二次元动漫 · 吉卜力与新海诚神仙美学",
+      "target_audience": "喜欢动漫、壁纸、治愈系与二次元风格的创作者与粉丝",
+      "xhs": {
+        "title": "一秒做出宫崎骏吉卜力手绘！神仙运镜提示词大公开🌿",
+        "subtitle": "你的名字与天气之子光影美学，一键套用",
+        "video_script": "【0-5s 视觉轰炸 · 抓眼球】\n（画面：播放一段极度治愈的吉卜力风草坡女孩追蒲公英视频，色彩极其饱满清澈，背景伴随久石让轻音乐）\n口播：“你敢相信？这段吉卜力动画电影质感的视频，只用了一句提示词就直接生成了！”\n\n【5-20s 美学拆解 · 核心关键词】\n（画面：高亮展示核心英语术语卡片）\n口播：“很多人写‘宫崎骏风格’，大模型根本不懂精髓。你必须给它这套专有词组：‘lush vibrant watercolor painted background’（浓郁手绘水彩画风）、‘whimsical fluffy clouds’（梦幻积雨云），以及‘emotional summer nostalgia’（夏日治愈怀旧感）。”\n\n【20-35s 工具实操演示】\n（画面：展示在提示词工坊中选择‘🌿 宫崎骏·吉卜力手绘’或‘🌧️ 新海诚·唯美光影’，自动生成纯正英文）\n口播：“工坊里直接内置了吉卜力、新海诚、皮克斯3D、美漫蜘蛛侠等8大动漫分类！只要选好风格，输入中文描述，它就自动翻译成大模型最认的地道语法，彻底杜绝中文乱码！”\n\n【35-45s 转化引流】\n（画面：展示模版一键加载功能）\n口播：“想做出这种封神动画分镜的，评论区扣【动漫】，把提示词模版和工具直接打包送你！”",
+        "post_body": "看腻了千篇一律的真人视频？今天教你用 AI 做出宫崎骏电影级别的神仙手绘动画！🍃\n\n普通人写 Prompt：\n❌ “一个女孩在草地上跑，宫崎骏风格，高清唯美” （AI 听了一头雾水，生成出来塑料感拉满）\n\n电影级 Prompt 架构：\n✅ [Framing]: A cinematic medium tracking shot follows a sweet anime girl wearing a woven straw hat with ribbon and white dress...\n✅ [Setting]: sunlit idyllic countryside hills with swaying green wheat waves under azure sky, vintage coastal train beside glittering blue sea...\n✅ [Motion]: running joyfully across the grassy hill chasing floating dandelion seeds...\n✅ [Aesthetic]: Studio Ghibli anime aesthetic, Hayao Miyazaki directorial style, hand-drawn 2D animation, lush vibrant watercolor painted background...\n✅ [Audio]: gentle summer breeze rustling tall grass, distant train horn echoing...\n\n✨ 工具推荐：\n在我们的【Muse 提示词工坊 Studio Max】里，点击【🎨 动画卡通】，一键预设好吉卜力、新海诚、皮克斯 3D、蜘蛛侠平行宇宙美漫波普！\n\n💬 想要这套动漫神仙模版的小伙伴，在评论区打【动漫】，我私信发你！记得点赞收藏防走丢～",
+        "tags": [
+          "#宫崎骏动画",
+          "#吉卜力风格",
+          "#新海诚美学",
+          "#动漫提示词",
+          "#AI视频教程",
+          "#可灵AI生成",
+          "#即梦AI",
+          "#Midjourney视频",
+          "#治愈系风景",
+          "#二次元创作者"
+        ],
+        "comment_hook": "需要吉卜力 & 新海诚提示词模版的小伙伴，在评论区留言【动漫】，我私信发你体验链接！",
+        "images": [
+          "xhs_cover.jpg",
+          "xhs_slide2.jpg"
+        ]
+      },
+      "x_thread": [
+        {
+          "tweet_num": 1,
+          "text": "Studio Ghibli & Makoto Shinkai aesthetics in AI video are mindblowing when prompt architecture is dialed in. 🌿⛅\n\nHere is how to get authentic hand-drawn watercolor anime motion in Sora, Kling & Runway Gen-3: 🧵👇"
+        },
+        {
+          "tweet_num": 2,
+          "text": "2/ Don't just type \"Miyazaki style\". Use optical descriptors:\n• \"lush vibrant watercolor painted background\"\n• \"whimsical towering cumulonimbus clouds\"\n• \"emotional summer nostalgia mood\"\n• \"panning camera tracking running subject\"\n• \"breeze rustling tall grass\" "
+        },
+        {
+          "tweet_num": 3,
+          "text": "We added 8 dedicated anime & cartoon modules into Muse Prompt Studio:\n🌸 Studio Ghibli\n🌧️ Makoto Shinkai (Your Name)\n🧸 Pixar 3D (Subsurface scattering)\n🕷️ Spider-Verse (Ben-Day pop art)\n\nTry it free & offline: https://github.com/Wisely88/muse 🚀"
+        }
+      ]
+    },
+    {
+      "id": "campaign_03_wong_kar_wai_retro",
+      "topic": "电影质感 · 80-90年代王家卫抽帧港风",
+      "target_audience": "追求高级影视质感、复古情怀、摄影与文艺片爱好者",
+      "xhs": {
+        "title": "王家卫电影那种抽帧霓虹感，用这句Prompt直接拿捏🎞️",
+        "subtitle": "复古港风、慢门抽帧、繁体字霓虹招牌教程",
+        "video_script": "【0-5s 经典台词氛围切入】\n（画面：慢门抽帧绿粉霓虹雨夜，深咖色风衣男子在电话亭点烟，电影烟雾缭绕，配怀旧萨克斯BGM）\n口播：“不知道从什么时候开始，连AI视频都开始有了保质期。但王家卫这种高级的抽帧胶片质感，任何时候看都是封神！”\n\n【5-20s 专业术语解码】\n（画面：红线标出画面的拖影、色彩和颗粒）\n口播：“很多人以为王家卫就是下雨和调色，大错特错！精髓在两个摄影技术词：‘step-printing slow shutter’——慢门抽帧拖影；以及杜可风摄影标志性的‘Christopher Doyle cinematography with handheld breathing’！”\n\n【20-35s 工坊快速实操】\n（画面：点击‘🇭🇰 80-90s 港片黄金期’，瞬间组合出完整的双向解析分镜表）\n口播：“用我们开发的提示词工坊，直接选中港片黄金期。繁体字粉绿霓虹、湿漉漉深水埗街巷、慢门拖影点烟，全套参数秒出！”\n\n【35-45s 互动转化】\n（画面：展示 Markdown 分镜台账一键导出）\n口播：“整套分镜台账一键复制就能喂给大模型。评论区扣【港风】，免费领走完整模版！”",
+        "post_body": "“如果记忆也是一个罐头的话，我希望它永远不会过期。” 🚬\n\n想要用 AI 做出《重庆森林》《堕落天使》那种高级到骨子里的王家卫港片质感，请把这套好莱坞导演参数刻进 DNA：\n\n🎬 核心参数结构：\n【风格基调】：1990s Hong Kong cinema aesthetic, Wong Kar-wai style, Christopher Doyle cinematography, step-printing slow shutter motion blur, neon green and warm amber hue, rich 35mm celluloid film grain\n【主体人物】：身着复古深咖色风衣的男子，微卷碎发被雨水打湿，神情落寞\n【场景环境】：狭窄逼仄的深水埗街巷，头顶繁体字粉绿霓虹招牌在雨雾中晕染，潮湿沥青路面流淌着彩色倒影\n【动作动态】：男子在慢门抽帧拖影中穿过拥挤街头，在闪烁的公用电话亭旁驻足点烟，烟雾缓缓升腾\n\n💡 这个提示词工坊把 80-90s 港片、90s VHS录像带、70s暖调柯达、Y2K千禧DV全部打包做成了一键生成！\n\n💬 喜欢这种复古电影质感的朋友，评论区扣【港风】，把工具链接发给你！",
+        "tags": [
+          "#王家卫美学",
+          "#电影质感",
+          "#港风复古",
+          "#AI视频教程",
+          "#电影分镜",
+          "#胶片摄影",
+          "#Sora提示词",
+          "#Runway视频",
+          "#视觉中国",
+          "#影视后期"
+        ],
+        "comment_hook": "想要王家卫港片复古提示词预设的朋友，评论区留言【港风】，自动私发工具体验地址！",
+        "images": [
+          "xhs_cover.jpg",
+          "xhs_slide2.jpg"
+        ]
+      },
+      "x_thread": [
+        {
+          "tweet_num": 1,
+          "text": "Wong Kar-wai's cinematic visual style in 90s Hong Kong cinema is legendary. 🇭🇰🎞️\n\nTo recreate his hypnotic aesthetic in AI video models (Runway / Sora / Kling), standard keywords won't cut it. \n\nHere is the director-level breakdown: 🧵👇"
+        },
+        {
+          "tweet_num": 2,
+          "text": "2/ The optical formula for the 90s Hong Kong look:\n• Shutter: \"step-printing slow shutter motion blur, hypnotic frame-lag\"\n• Optics: \"handheld lens with natural breathing\"\n• Palette: \"magenta & jade green neon reflections\"\n• Medium: \"organic 35mm celluloid film grain\" "
+        },
+        {
+          "tweet_num": 3,
+          "text": "All 22 retro & cinematic styles are pre-built inside our open-source Muse Studio.\nZero backend, runs in any browser:\nhttps://github.com/Wisely88/muse\n\nRT & Bookmark if you love cinematic film aesthetics! 🎥✨"
+        }
+      ]
+    },
+    {
+      "id": "campaign_04_long_take_timeline",
+      "topic": "技术进阶 · 长镜头时序分镜 (0-3s / 3-6s)",
+      "target_audience": "中高阶创作者、商业广告片导演、希望视频运镜有故事感的专业用户",
+      "xhs": {
+        "title": "终于有人把AI长镜头讲明白了！0-6秒时序分镜保姆级教学🎥",
+        "subtitle": "告别画面抽搐，教会你电影级推拉摇移视线交汇",
+        "video_script": "【0-5s 痛点直击】\n（画面：展示一个镜头突然卡顿、跳帧变形的对比案例）\n口播：“为什么你生成的AI视频只有前两秒好看，后面运镜就突然发疯变形？因为你没有给AI输入时序分镜逻辑！”\n\n【5-20s 原理解释 · 视线引导】\n（画面：展示时间轴图解 0-3s 与 3-6s）\n口播：“在大模型底层，单镜头超过4秒就会出现物理发散。真正聪明的做法是用时序锚点：0到3秒固定起幅动作；3到6秒镜头越肩推进，把视线延伸交汇到第二主体！”\n\n【20-35s 工具生成长镜头】\n（画面：展示在提示词工坊中勾选‘开启长镜头时序分镜’，分别输入0-3s和3-6s动作，一键生成结构化Prompt）\n口播：“看看工坊生成的输出：自动划分[0-3s]与[3-6s]动作延伸，还附带好莱坞标准的导演分镜Markdown台账，直接复制就能用在各种商业短片里！”\n\n【35-45s 引流转化】\n（画面：展示分镜台账导出与多平台支持）\n口播：“想要这套长镜头时序生成器的，评论区扣【长镜头】，我把工具和实操指南发你！”",
+        "post_body": "很多人生成视频发现：画面只帅了 2 秒，第 3 秒运镜就开始抽搐变形… 🤯\n\n这是因为视频大模型（无论是 Sora 还是 Runway Gen-3）在没有时间轴指令时，会自动发散！\n\n解决这个问题的绝招就是——【分段时序长镜头架构】：\n\n🎬 结构标准范例：\n⏱️ [0-3s 起幅动作]：中景跟随少年步履，在雨后反光积水路面溅起细密水花\n⏱️ [3-6s 运镜延伸]：镜头顺滑越过少年肩膀向前推入对焦，交汇至公园门口焦急等待的紫裙女孩\n🎬 运镜指令：Camera smoothly tracks alongside then pushes in toward subject\n💡 光影配合：低角度夕阳逆光穿透云层，地面反射金色晚霞\n\n在我们的【Muse 视频提示词工坊】里，直接勾选【开启长镜头时序分镜】，填入起幅与推进，自动生成工业级长镜头指令包与 Markdown 导演台账！\n\n💬 想做出丝滑电影级长镜头的朋友，评论区留言【长镜头】，私信发送工具体验地址！",
+        "tags": [
+          "#AI长镜头",
+          "#运镜技巧",
+          "#影视分镜",
+          "#AI视频教程",
+          "#导演思维",
+          "#Sora",
+          "#RunwayGen3",
+          "#视频剪辑技巧",
+          "#电影摄影",
+          "#AI创作"
+        ],
+        "comment_hook": "评论区留言【长镜头】，自动私发全套长镜头分镜提示词生成器与在线地址！",
+        "images": [
+          "xhs_cover.jpg",
+          "xhs_slide2.jpg"
+        ]
+      },
+      "x_thread": [
+        {
+          "tweet_num": 1,
+          "text": "Why do AI videos fall apart after 3 seconds? 🎬\n\nVideo models hallucinate physics unless you provide temporal anchors.\n\nHere is how to structure 0-6s cinematic long takes using sequential camera directives: 🧵👇"
+        },
+        {
+          "tweet_num": 2,
+          "text": "2/ The 2-Phase Sequence Structure:\n• [0-3s Establish]: Tracking shot locking primary subject physics (footsteps in puddles).\n• [3-6s Reveal]: Camera pushes past shoulder, shifting focus to reveal secondary subject ahead.\n• Constant lighting and optics throughout."
+        },
+        {
+          "tweet_num": 3,
+          "text": "We integrated this timeline feature into Muse Prompt Studio:\n1-click toggle for [0-3s] and [3-6s] motion design + Markdown storyboard export.\n\nFree, open-source & private:\nhttps://github.com/Wisely88/muse\n\nShare with anyone making AI films! 🚀🎥"
+        }
+      ]
+    }
+  ]
+}

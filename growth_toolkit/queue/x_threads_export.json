@@ -1,0 +1,38 @@
+[
+  {
+    "campaign_id": "campaign_01_painpoint_avoidance",
+    "topic": "避坑痛点 · 提升出片率",
+    "tweets": [
+      "🚨 Stop writing AI video prompts in broken sentences!\n\nIf your Sora, Runway Gen-3, or Kling videos look like stiff PPTs, you're missing the Hollywood 7-part director formula.\n\nHere is how pros architect cinematic prompts (and a free open-source studio to build them) 🧵👇",
+      "1/ The Golden Video Formula:\n• Framing: [Shot type & optics]\n• Subject: [Garments & physical textures]\n• Space: [Atmospheric depth & reflections]\n• Motion: [Action evolution + tracking]\n• Aesthetic: [35mm / Kodak 500T / Ghibli]\n• Lighting & Audio: [Volumetric + Sound]",
+      "2/ We built \"Muse Prompt Studio Max\" — a 100% client-side director workbench:\n✨ 22 aesthetics (Anime, Retro, Film, UE5)\n✨ Auto brand sanitization\n✨ 0-3s & 3-6s camera timeline\n✨ Native Hollywood English\n\nLive Demo & Code: https://github.com/Wisely88/muse\nStar & RT! 🎬🚀"
+    ]
+  },
+  {
+    "campaign_id": "campaign_02_anime_ghibli_shinkai",
+    "topic": "二次元动漫 · 吉卜力与新海诚神仙美学",
+    "tweets": [
+      "Studio Ghibli & Makoto Shinkai aesthetics in AI video are mindblowing when prompt architecture is dialed in. 🌿⛅\n\nHere is how to get authentic hand-drawn watercolor anime motion in Sora, Kling & Runway Gen-3: 🧵👇",
+      "2/ Don't just type \"Miyazaki style\". Use optical descriptors:\n• \"lush vibrant watercolor painted background\"\n• \"whimsical towering cumulonimbus clouds\"\n• \"emotional summer nostalgia mood\"\n• \"panning camera tracking running subject\"\n• \"breeze rustling tall grass\" ",
+      "We added 8 dedicated anime & cartoon modules into Muse Prompt Studio:\n🌸 Studio Ghibli\n🌧️ Makoto Shinkai (Your Name)\n🧸 Pixar 3D (Subsurface scattering)\n🕷️ Spider-Verse (Ben-Day pop art)\n\nTry it free & offline: https://github.com/Wisely88/muse 🚀"
+    ]
+  },
+  {
+    "campaign_id": "campaign_03_wong_kar_wai_retro",
+    "topic": "电影质感 · 80-90年代王家卫抽帧港风",
+    "tweets": [
+      "Wong Kar-wai's cinematic visual style in 90s Hong Kong cinema is legendary. 🇭🇰🎞️\n\nTo recreate his hypnotic aesthetic in AI video models (Runway / Sora / Kling), standard keywords won't cut it. \n\nHere is the director-level breakdown: 🧵👇",
+      "2/ The optical formula for the 90s Hong Kong look:\n• Shutter: \"step-printing slow shutter motion blur, hypnotic frame-lag\"\n• Optics: \"handheld lens with natural breathing\"\n• Palette: \"magenta & jade green neon reflections\"\n• Medium: \"organic 35mm celluloid film grain\" ",
+      "All 22 retro & cinematic styles are pre-built inside our open-source Muse Studio.\nZero backend, runs in any browser:\nhttps://github.com/Wisely88/muse\n\nRT & Bookmark if you love cinematic film aesthetics! 🎥✨"
+    ]
+  },
+  {
+    "campaign_id": "campaign_04_long_take_timeline",
+    "topic": "技术进阶 · 长镜头时序分镜 (0-3s / 3-6s)",
+    "tweets": [
+      "Why do AI videos fall apart after 3 seconds? 🎬\n\nVideo models hallucinate physics unless you provide temporal anchors.\n\nHere is how to structure 0-6s cinematic long takes using sequential camera directives: 🧵👇",
+      "2/ The 2-Phase Sequence Structure:\n• [0-3s Establish]: Tracking shot locking primary subject physics (footsteps in puddles).\n• [3-6s Reveal]: Camera pushes past shoulder, shifting focus to reveal secondary subject ahead.\n• Constant lighting and optics throughout.",
+      "We integrated this timeline feature into Muse Prompt Studio:\n1-click toggle for [0-3s] and [3-6s] motion design + Markdown storyboard export.\n\nFree, open-source & private:\nhttps://github.com/Wisely88/muse\n\nShare with anyone making AI films! 🚀🎥"
+    ]
+  }
+]
