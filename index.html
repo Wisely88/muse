@@ -810,6 +810,369 @@
         margin-bottom: 12px;
       }
     }
+  
+    /* ========================================================
+       🎬 AI 主题一键导演 · 全片自动化分镜工作站 专有样式
+       ======================================================== */
+    .ai-director-btn {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(236, 72, 153, 0.15)) !important;
+      border: 1px solid rgba(245, 158, 11, 0.5) !important;
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+    }
+    .ai-director-btn:hover {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(236, 72, 153, 0.3)) !important;
+      border-color: #f59e0b !important;
+      transform: translateY(-1px);
+    }
+
+    .topic-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 4, 8, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 120;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      overflow-y: auto;
+    }
+    .topic-modal-overlay.open {
+      display: flex;
+    }
+
+    .topic-modal-container {
+      background: #111119;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: var(--radius-xl);
+      max-width: 980px;
+      width: 100%;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(124, 58, 237, 0.2);
+      overflow: hidden;
+      animation: modalFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.96) translateY(12px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .topic-modal-header {
+      padding: 18px 24px;
+      background: linear-gradient(90deg, rgba(124, 58, 237, 0.12), rgba(245, 158, 11, 0.08));
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .topic-modal-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .topic-modal-title-text {
+      font-size: 17px;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .topic-badge-ai {
+      font-size: 11px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #f59e0b, #ec4899);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 99px;
+    }
+
+    .topic-modal-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .topic-modal-body {
+      padding: 20px 24px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    /* 输入控制区 */
+    .topic-input-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      margin-bottom: 20px;
+    }
+
+    .topic-textarea {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      color: #fff;
+      font-size: 14px;
+      line-height: 1.6;
+      resize: vertical;
+      min-height: 64px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .topic-textarea:focus {
+      border-color: var(--brand-primary);
+      box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2);
+    }
+
+    .topic-quick-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+      align-items: center;
+    }
+
+    .topic-chip-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .topic-chip {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-sm);
+      padding: 3px 9px;
+      font-size: 11px;
+      color: var(--text-sub);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .topic-chip:hover {
+      background: rgba(124, 58, 237, 0.2);
+      border-color: var(--brand-primary);
+      color: #fff;
+    }
+
+    .topic-options-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .topic-option-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .topic-option-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .topic-select {
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      color: var(--text-main);
+      padding: 8px 10px;
+      font-size: 12px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .topic-gen-btn {
+      width: 100%;
+      margin-top: 16px;
+      padding: 12px;
+      background: linear-gradient(135deg, #7c3aed 0%, #d946ef 50%, #f59e0b 100%);
+      color: #fff;
+      font-weight: 800;
+      font-size: 14px;
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 18px rgba(217, 70, 239, 0.35);
+      transition: all 0.2s;
+    }
+    .topic-gen-btn:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 22px rgba(217, 70, 239, 0.5);
+    }
+
+    /* 分镜结果展示区 */
+    .storyboard-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .storyboard-summary-bar {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: var(--radius-md);
+      padding: 10px 16px;
+      font-size: 12px;
+      color: #6ee7b7;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .shot-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      position: relative;
+      transition: all 0.2s;
+    }
+    .shot-card:hover {
+      border-color: rgba(124, 58, 237, 0.5);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+    }
+
+    .shot-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .shot-badge-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .shot-number-badge {
+      background: var(--brand-primary);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: var(--radius-sm);
+    }
+
+    .shot-phase-tag {
+      font-size: 12px;
+      font-weight: 700;
+      color: #f1f5f9;
+    }
+
+    .shot-meta-pills {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .shot-meta-pill {
+      font-size: 10px;
+      padding: 2px 6px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      color: var(--text-muted);
+    }
+
+    .shot-desc-zh {
+      font-size: 13px;
+      color: #cbd5e1;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    .shot-prompt-en-box {
+      background: #09090d;
+      border: 1px solid #232333;
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #a78bfa;
+      user-select: all;
+      margin-bottom: 12px;
+      white-space: pre-wrap;
+    }
+
+    .shot-card-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 10px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .shot-target-model-hint {
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .shot-btns-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .load-to-muse-btn {
+      background: rgba(124, 58, 237, 0.2);
+      border: 1px solid var(--brand-primary);
+      color: #c4b5fd;
+      padding: 5px 12px;
+      border-radius: var(--radius-md);
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s;
+    }
+    .load-to-muse-btn:hover {
+      background: var(--brand-primary);
+      color: #fff;
+    }
+
+    .topic-modal-footer {
+      padding: 14px 24px;
+      background: #0d0d14;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
   </style>
 </head>
 <body>
@@ -838,6 +1201,10 @@
       </div>
 
       <div class="header-actions">
+        <button class="tool-btn ai-director-btn" onclick="openTopicDirectorModal()" title="AI 主题一键导演生成全片连续分镜">
+          <span style="font-size:14px">🎬</span>
+          <span style="background: linear-gradient(135deg, #f59e0b 0%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight:800;">一键主题成片</span>
+        </button>
         <button class="tool-btn" onclick="openDrawer('history')" title="查看历史记录">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           <span>历史</span>
@@ -892,13 +1259,14 @@
           <div class="card-subtext">选择动画卡通、电影胶片、复古年代与次世代质感</div>
         </div>
 
-        <!-- 风格分类过滤标签 -->
+        <!-- 风格分类过滤标签 (全量 16 款工业级风格矩阵) -->
         <div class="style-category-bar" id="styleCategoryBar">
-          <button type="button" class="style-category-chip active" data-cat="all" onclick="filterStyleCategory('all', this)">全部风格 (22)</button>
-          <button type="button" class="style-category-chip" data-cat="anime" onclick="filterStyleCategory('anime', this)">🎨 动画卡通 (8)</button>
-          <button type="button" class="style-category-chip" data-cat="retro" onclick="filterStyleCategory('retro', this)">📼 经典复古 (7)</button>
-          <button type="button" class="style-category-chip" data-cat="cinema" onclick="filterStyleCategory('cinema', this)">🎬 电影胶片 (4)</button>
-          <button type="button" class="style-category-chip" data-cat="scifi" onclick="filterStyleCategory('scifi', this)">🚀 科幻次世代 (3)</button>
+          <button type="button" class="style-category-chip active" data-cat="all" onclick="filterStyleCategory('all', this)">全部风格 (16)</button>
+          <button type="button" class="style-category-chip" data-cat="comic" onclick="filterStyleCategory('comic', this)">🎨 动态漫与定格 (4)</button>
+          <button type="button" class="style-category-chip" data-cat="cinema" onclick="filterStyleCategory('cinema', this)">🎬 院线级写实 (4)</button>
+          <button type="button" class="style-category-chip" data-cat="retro" onclick="filterStyleCategory('retro', this)">📼 经典复古年代 (4)</button>
+          <button type="button" class="style-category-chip" data-cat="oriental" onclick="filterStyleCategory('oriental', this)">🏮 东方美学国风 (2)</button>
+          <button type="button" class="style-category-chip" data-cat="modern_anime" onclick="filterStyleCategory('modern_anime', this)">✨ 新一代数字动漫 (2)</button>
         </div>
 
         <div class="style-grid" id="styleGrid">
@@ -1144,6 +1512,132 @@
 
   </main>
 
+
+  <!-- ========================================================
+       🎬 AI 主题一键成片 · 智能分镜导演工作站 模态弹窗
+       ======================================================== -->
+  <div class="topic-modal-overlay" id="topicDirectorModal" onclick="closeTopicDirectorModal(event)">
+    <div class="topic-modal-container" onclick="event.stopPropagation()">
+      <div class="topic-modal-header">
+        <div class="topic-modal-title">
+          <div class="brand-icon" style="background: linear-gradient(135deg, #f59e0b, #ec4899);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="23 7 16 12 23 17 23 7"/><rect width="14" height="14" x="1" y="5" rx="2" ry="2"/></svg>
+          </div>
+          <div>
+            <div class="topic-modal-title-text">
+              AI 主题一键成片 · 智能分镜导演
+              <span class="topic-badge-ai">DIRECTOR PRO</span>
+            </div>
+            <div class="topic-modal-desc">只给一个灵感主题，自动拆解戏剧五幕连续分镜，靶向匹配可灵/Runway/海螺，与 Muse 工坊无缝精修</div>
+          </div>
+        </div>
+        <button class="tool-btn" onclick="closeTopicDirectorModal()">✕ 关闭</button>
+      </div>
+
+      <div class="topic-modal-body">
+        <!-- 主题输入控制区 -->
+        <div class="topic-input-panel">
+          <textarea class="topic-textarea" id="topicInput" placeholder="输入一句话主题或故事灵感，例如：雨夜老街的深处，一家冒着热气的治愈拉面馆；或者：退役机甲战士在金黄麦田里独自修理收割机..."></textarea>
+          
+          <div class="topic-quick-chips">
+            <span class="topic-chip-label">💡 爆款预设：</span>
+            <span class="topic-chip" onclick="fillTopicPreset('赛博朋克雨夜寻踪：侦探在霓虹反光的积水巷弄中追踪发光的仿生蝴蝶', 'cyberpunk', 'kling')">🌆 赛博雨夜仿生谍影</span>
+            <span class="topic-chip" onclick="fillTopicPreset('深夜老街治愈拉面馆：暴雨中推门而入的疲惫青年与热腾腾的豚骨拉面', 'cafe', 'hailuo')">🍜 深夜老街豚骨拉面</span>
+            <span class="topic-chip" onclick="fillTopicPreset('古风雪夜竹林决决：红衣侠客在漫天飞雪与残叶中拔出寒光古剑', 'wuxia', 'kling')">⚔️ 雪夜竹林剑影对决</span>
+            <span class="topic-chip" onclick="fillTopicPreset('高定香水商业广告：深黑镜面水台上水晶香水瓶与垂直跌落的晶莹水珠微距慢动', 'commercial', 'runway')">💎 奢华高定香水大片</span>
+            <span class="topic-chip" onclick="fillTopicPreset('阿尔卑斯雪峰穿越：穿越机以极速掠过险峻冰川脊线并冲向云海日落', 'documentary', 'luma')">🏔️ 极限雪峰穿越探险</span>
+          </div>
+
+          <div class="topic-options-row">
+            <div class="topic-option-group">
+              <label class="topic-option-label">戏剧结构 / 镜头数量</label>
+              <select class="topic-select" id="topicShotCount">
+                <option value="5" selected>经典五幕 (起·承·转·合·结 · 推荐)</option>
+                <option value="3">精炼三幕 (起幅 · 动作 · 留白)</option>
+                <option value="6">完整影视叙事 (6 镜头深度故事板)</option>
+              </select>
+            </div>
+            <div class="topic-option-group">
+              <label class="topic-option-label">画面基调风格 (16款工业风格矩阵)</label>
+              <select class="topic-select" id="topicStylePreset">
+                <optgroup label="🎨 动态漫与定格艺术 (推荐台词搭配)">
+                  <option value="spiderverse">🕷️ 美漫波普动态漫 (半色调网点/抽帧定格)</option>
+                  <option value="manga_bw">✒️ 经典黑白日漫原画 (速度线/分镜台词)</option>
+                  <option value="claymation">🧶 手工黏土定格动画 (阿德曼物理停格)</option>
+                  <option value="french_comic">🖍️ 欧式绘本与钢笔淡彩 (法式水彩绘本文学)</option>
+                </optgroup>
+                <optgroup label="🎬 院线级写实影视">
+                  <option value="wasteland_scifi" selected>🏜️ 工业废土科幻大片 (沙丘/飞船/重工业)</option>
+                  <option value="cinematic_35mm">🎬 35mm 现代院线胶片 (阿莱电影机调色)</option>
+                  <option value="lifestyle_pov">📱 真实手机街拍 Vlog (iPhone实拍微晃)</option>
+                  <option value="commercial_macro">💎 奢华商业广告大片 (RED 8K超微距慢放)</option>
+                </optgroup>
+                <optgroup label="📼 经典复古与年代胶片">
+                  <option value="hk90s_wong">🇭🇰 80-90s 港片黄金期 (王家卫抽帧慢门)</option>
+                  <option value="vhs90s">📹 90年代VHS录像带 (模拟磁带时间戳)</option>
+                  <option value="retro70s">🎞️ 70年代加州暖阳公路片 (柯达克罗姆暖金)</option>
+                  <option value="noir60s">🕶️ 60年代巴黎黑白新浪潮 (法国银盐高反差)</option>
+                </optgroup>
+                <optgroup label="🏮 东方美学与国风古韵">
+                  <option value="ink_wash">🌸 大美写意水墨国漫 (齐白石水墨/诗词朗诵)</option>
+                  <option value="wuxia_noir">🗡️ 东方冷兵器硬核武侠 (风雪残叶/刀剑出鞘)</option>
+                </optgroup>
+                <optgroup label="✨ 新一代数字动漫">
+                  <option value="shinkai">🌧️ 新海诚绝美光影动漫 (唯美云海雨滴彩虹)</option>
+                  <option value="pixar3d">🧸 迪士尼·皮克斯 3D (次表面散射/萌趣表情)</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="topic-option-group">
+              <label class="topic-option-label">视频生成引擎 / 渲染网关</label>
+              <select class="topic-select" id="topicTargetEngine">
+                <option value="gemini_veo">🔮 Google Veo (Gemini 电影世界模型)</option>
+                <option value="comfyui_wan21">⚡ 阿里 Wan 2.1 (ComfyUI 本地真人高保真)</option>
+                <option value="kling">🔥 快手可灵 Kling (强化物理交互与首尾帧)</option>
+                <option value="hailuo">🌊 MiniMax 海螺 (大动作与面部情绪张力)</option>
+                <option value="runway">✨ Runway Gen-3 (阿莱电影调色与运镜)</option>
+                <option value="mock_simulator" selected>🧪 本地仿真引擎 (Mock 零成本调试)</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="topic-gen-btn" onclick="generateStoryboardFromTopic()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span>开始智能导演拆解 · 自动化生成全片分镜台账</span>
+          </button>
+        </div>
+
+        <!-- 分镜卡片展示区 -->
+        <div id="storyboardResultArea" style="display: none;">
+          <div class="storyboard-summary-bar" id="storyboardSummaryBar">
+            <!-- 概要统计 -->
+          </div>
+          <div class="storyboard-container" id="storyboardCardsContainer" style="margin-top: 14px;">
+            <!-- 动态生成的镜头卡片 -->
+          </div>
+        </div>
+      </div>
+
+      <div class="topic-modal-footer">
+        <div style="font-size: 11px; color: var(--text-muted);">
+          💡 点击镜头卡片上的 <b style="color:#c4b5fd;">【📥 载入至 Muse 工坊精修】</b> 可将单镜无缝调入主工作台自由微调。
+        </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button class="tool-btn" style="background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.4); color: #34d399;" onclick="triggerBatchRenderPipeline()">
+            🚀 调度引擎批量渲染全片
+          </button>
+          <button class="tool-btn" onclick="copyAllShotsBundle()" id="copyAllShotsBtn">
+            📋 复制全片纯英文分镜包
+          </button>
+          <button class="tool-btn" onclick="copyFFmpegScript()">
+            🎞️ 导出 FFmpeg 自动化剪辑脚本
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <!-- 历史记录 / 收藏夹 弹窗抽屉 (Local Storage Powered) -->
   <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer(event)">
     <div class="drawer-content" onclick="event.stopPropagation()">
@@ -1186,166 +1680,152 @@
   <script>
     // --- 风格预设数据 (22款涵盖动画卡通、胶片、复古年代、科幻次世代) ---
     const STYLES = [
-      // 🎨 动画与卡通 (Anime & Cartoon)
-      {
-        id: 'ghibli',
-        category: 'anime',
-        name: '🌿 宫崎骏·吉卜力手绘',
-        tagEn: 'Studio Ghibli anime aesthetic, Hayao Miyazaki directorial style, hand-drawn 2D animation, lush vibrant watercolor painted background, emotional summer nostalgia, whimsical fluffy clouds, Joe Hisaishi movie atmosphere, painterly scenery',
-        desc: '治愈手绘、吉卜力蓝天麦浪'
-      },
-      {
-        id: 'shinkai',
-        category: 'anime',
-        name: '🌧️ 新海诚·唯美光影动漫',
-        tagEn: 'Makoto Shinkai anime aesthetic, Your Name and Weathering With You style, luminous photorealistic skies, sparkling lens flare refractions, tear-drop rain reflections on wet ground, hyper-detailed emotional anime scenery',
-        desc: '你的名字/绝美光影雨后云霞'
-      },
-      {
-        id: 'pixar3d',
-        category: 'anime',
-        name: '🧸 迪士尼·皮克斯 3D',
-        tagEn: 'Pixar 3D animation style, Disney RenderMan engine, subsurface scattering skin and clothing shaders, exaggerated expressive character design, warm whimsical volumetric lighting, octane render, 8k cute 3D CGI',
-        desc: '皮克斯3D、细腻材质萌趣表情'
-      },
+      // ==========================================
+      // 🎨 1. 动态漫与定格艺术 (Motion Comic & Stop-Motion)
+      // ==========================================
       {
         id: 'spiderverse',
-        category: 'anime',
-        name: '🕷️ 蜘蛛侠·美漫波普',
-        tagEn: 'Spider-Verse comic book animation style, halftone dots pattern, dynamic Ben-Day dots, chromatic aberration line art, pop-art color splash, kinetic motion lines, stylish comic graphic novel aesthetic',
-        desc: '平行宇宙、网点波普抽帧'
+        category: 'comic',
+        name: '🕷️ 美漫波普动态漫',
+        tagEn: 'Spider-Verse comic book animation style, halftone dots pattern, dynamic Ben-Day dots, chromatic aberration line art, pop-art color splash, kinetic motion lines, stylish comic graphic novel aesthetic, 12fps stop-motion rhythm',
+        desc: '平行宇宙美漫、半色调网点抽帧定格',
+        dialogueHint: '适合硬汉幽默台词、第一人称快速独白与撞色手绘拟声词'
       },
       {
-        id: 'cel_anime',
-        category: 'anime',
-        name: '📺 90s 复古赛璐珞动漫',
-        tagEn: 'Classic 1990s retro anime style, vintage cel animation, Cowboy Bebop and Neon Genesis Evangelion aesthetic, hand-drawn film grain, rich saturated analog colors, authentic retro anime frame scan',
-        desc: '星际牛仔/EVA赛璐珞经典'
+        id: 'manga_bw',
+        category: 'comic',
+        name: '✒️ 经典黑白日漫原画',
+        tagEn: 'Classic Japanese black-and-white manga art style, ultra-fine ink cross-hatching shade, dynamic speed lines, high-contrast g-pen ink strokes, expressive graphic panel composition, dramatic comic book frame aesthetic',
+        desc: '日漫手绘原画、高反差排线分镜',
+        dialogueHint: '适合沉稳压抑的内心独白、热血誓言与漫画对话框'
       },
       {
         id: 'claymation',
-        category: 'anime',
-        name: '🧶 定格黏土动画',
-        tagEn: 'Tactile stop-motion claymation animation, handcrafted plasticine textures, Aardman and Coraline aesthetic, subtle physical fingerprint impressions, miniature puppet lighting, tactile 12fps movement feel',
-        desc: '手工黏土、指纹定格偶动画'
-      },
-      {
-        id: 'ink_wash',
-        category: 'anime',
-        name: '🌸 东方写意水墨国漫',
-        tagEn: 'Traditional Chinese ink wash animation aesthetic, poetic watercolor brush strokes, ethereal misty mountains and rivers, flowing calligraphy lines, Dunhuang artistic elegance, animated oriental masterpiece',
-        desc: '传统水墨写意、中国古风国漫'
+        category: 'comic',
+        name: '🧶 手工黏土定格动画',
+        tagEn: 'Tactile stop-motion claymation animation, handcrafted plasticine textures, Aardman and Coraline aesthetic, subtle physical fingerprint impressions, miniature puppet lighting, tactile 12fps movement feel, delightful handcrafted charm',
+        desc: '阿德曼手工黏土、物理停格偶动画',
+        dialogueHint: '适合童话寓言旁白、诙谐幽默对话与手风琴轻快配乐'
       },
       {
         id: 'french_comic',
-        category: 'anime',
-        name: '🖍️ 欧式绘本插画定格',
-        tagEn: 'European graphic novel style, vintage French storybook illustration, delicate pen and ink outlines, flat muted pastel colors, whimsical storybook charm, artistic indie animation aesthetic',
-        desc: '法式童话绘本、手绘素描质感'
+        category: 'comic',
+        name: '🖍️ 欧式绘本与钢笔淡彩',
+        tagEn: 'European graphic novel style, vintage French storybook illustration, delicate dip pen outlines, soft muted watercolor pastel wash, whimsical storybook charm, artistic indie animation aesthetic, paper grain texture',
+        desc: '法式童话绘本、手绘钢笔素描淡彩',
+        dialogueHint: '适合慢速散文朗诵、抒情大提琴与沉思独白'
       },
 
-      // 📼 经典复古年代 (Retro Decades)
+      // ==========================================
+      // 🎬 2. 院线级写实影视 (Live-Action & Cinematic)
+      // ==========================================
       {
-        id: 'retro2000s',
-        category: 'retro',
-        name: '📼 2000年代青春唯美',
-        tagEn: 'Nostalgic 2000s cinematic aesthetic, poetic youth film mood, warm film grain, dreamy golden lens flares, 35mm film stock, Arri Alexa color grade',
-        desc: '青春大片、唯美晚霞'
+        id: 'wasteland_scifi',
+        category: 'cinema',
+        name: '🏜️ 工业废土科幻大片',
+        tagEn: 'Post-apocalyptic industrial sci-fi aesthetic, Dune 2021 cinematography, vast desert dunes burying brutalist megastructures, heavy industrial spaceship with glowing ion thrusters, Arri Alexa 35mm, volumetric sandstorm haze, atmospheric lighting',
+        desc: '沙丘重工业废土、沙暴飞船科幻',
+        dialogueHint: '适合低沉沧桑的末日幸存者日志、无线电杂音与机械重低音'
       },
       {
-        id: 'hk90s',
+        id: 'cinematic_35mm',
+        category: 'cinema',
+        name: '🎬 35mm 现代院线胶片',
+        tagEn: 'Cinematic 35mm celluloid film stock, Kodak Vision3 500T aesthetic, anamorphic widescreen horizontal lens flare, Master Prime lenses, organic fine film grain, shallow depth of field, dramatic chiaroscuro lighting, 8k uhd',
+        desc: '好莱坞大片、变形宽银幕光斑',
+        dialogueHint: '适合严肃戏剧对白、院线预告片解说与交响管弦乐'
+      },
+      {
+        id: 'lifestyle_pov',
+        category: 'cinema',
+        name: '📱 真实手机街拍 Vlog',
+        tagEn: 'Raw candid lifestyle video, iPhone 15 Pro footage, authentic natural unedited lighting, handheld POV vlog perspective, casual realism, subtle natural hand shake, true-to-life skin textures, authentic ambience',
+        desc: 'iPhone手持微晃、生活自然实拍',
+        dialogueHint: '适合生活化口语口播、现场第一人称原声收录'
+      },
+      {
+        id: 'commercial_macro',
+        category: 'cinema',
+        name: '💎 奢华商业广告微距',
+        tagEn: 'Luxury commercial product aesthetics, RED V-Raptor 8k, pristine studio softbox gradient lighting, crystal sharp caustics reflection on water, elegant 1000fps slow-motion capture, high-end color grading, macro details',
+        desc: 'RED 8K超微距、高反差通透慢放',
+        dialogueHint: '适合轻柔磁性低语旁白（Whisper VO）与高端品牌广告词'
+      },
+
+      // ==========================================
+      // 📼 3. 经典复古与年代胶片 (Retro Decades)
+      // ==========================================
+      {
+        id: 'hk90s_wong',
         category: 'retro',
         name: '🇭🇰 80-90s 港片黄金期',
-        tagEn: '1990s Hong Kong cinema aesthetic, Wong Kar-wai style, Christopher Doyle cinematography, step-printing slow shutter motion blur, neon green and warm amber hue, rich 35mm celluloid film grain, handheld camera',
-        desc: '王家卫慢门抽帧霓虹'
+        tagEn: '1990s Hong Kong cinema aesthetic, Wong Kar-wai directorial style, Christopher Doyle cinematography, step-printing slow shutter motion blur, neon green and warm amber hue, rich 35mm celluloid film grain, handheld camera in rain',
+        desc: '王家卫抽帧慢门、九龙霓虹夜雨',
+        dialogueHint: '适合标志性粤语/国语诗意独白与萨克斯布鲁斯爵士乐'
       },
       {
         id: 'vhs90s',
         category: 'retro',
         name: '📹 90年代VHS录像带',
-        tagEn: 'Authentic 1990s VHS home camcorder footage, magnetic tape scanlines, analog color bleed, subtle static noise, soft fuzzy edges, 4:3 aspect ratio feel, raw nostalgic home video',
-        desc: '磁带复古、家用录像'
+        tagEn: 'Authentic 1990s VHS home camcorder footage, magnetic tape scanlines, analog color bleed, subtle static tracking noise, soft fuzzy edges, glowing red digital timestamp, raw nostalgic home video tape',
+        desc: '磁带扫描线、家庭录像红色时间戳',
+        dialogueHint: '适合粗粝录音机质感对话、磁带嘶嘶底噪与童年怀旧回忆'
       },
       {
         id: 'retro70s',
         category: 'retro',
-        name: '🎞️ 70年代暖调柯达',
-        tagEn: '1970s vintage Hollywood cinema, Kodachrome 64 film stock, warm earthy mustard and golden amber palette, vintage Panavision C-series anamorphic lenses, sun-drenched retro film look',
-        desc: '加州暖阳公路片'
+        name: '🎞️ 70年代加州暖阳公路',
+        tagEn: '1970s vintage Hollywood cinema, Kodachrome 64 film stock, warm earthy mustard and golden amber palette, vintage Panavision anamorphic lenses, sun-drenched retro highway look, atmospheric dust motes',
+        desc: '加州阳光公路、柯达克罗姆暖金',
+        dialogueHint: '适合旅人公路民谣独白与经典复古乡村摇滚乐'
       },
       {
         id: 'noir60s',
         category: 'retro',
         name: '🕶️ 60年代新浪潮黑白',
-        tagEn: '1960s French New Wave cinema, Jean-Luc Godard style, timeless 35mm black and white film, high-contrast silver gelatin print, deep rich blacks, luminous whites, natural poetic lighting',
-        desc: '法国新浪潮银盐经典'
-      },
-      {
-        id: 'y2k_dv',
-        category: 'retro',
-        name: '💿 Y2K 千禧早期数码DV',
-        tagEn: 'Early 2000s Y2K aesthetic, Sony DCR-VX1000 MiniDV camcorder, raw early digital video artifacts, fish-eye perspective feel, nostalgic pop music video vibe, soft pixel bloom',
-        desc: 'MiniDV 街头滑板MV'
-      },
-      {
-        id: 'silent20s',
-        category: 'retro',
-        name: '🎩 1920年代无声默片',
-        tagEn: '1920s vintage silent film era, hand-cranked camera shutter speed jitter, sepia tone monochrome, authentic celluloid dust and scratches, heavy vignette, historical cinematic artifact',
-        desc: '胶片划痕、手摇跳动'
+        tagEn: '1960s French New Wave cinema, Jean-Luc Godard style, timeless 35mm black and white film, high-contrast silver gelatin print, deep rich blacks, luminous whites, natural poetic outdoor lighting in Paris',
+        desc: '法国新浪潮银盐高反差胶片',
+        dialogueHint: '适合哲思深邃的男女对答、存在主义文学独白'
       },
 
-      // 🎬 电影与胶片 (Cinematic & Film)
+      // ==========================================
+      // 🏮 4. 东方美学与国风古韵 (Oriental Traditional)
+      // ==========================================
       {
-        id: 'cinematic',
-        category: 'cinema',
-        name: '🎬 好莱坞现代院线',
-        tagEn: 'Cinematic 35mm film stock, anamorphic widescreen, Arri Alexa Mini LF, Master Prime lenses, cinematic color grading, shallow depth of field, sharp focus, 8k uhd',
-        desc: '阿莱电影机院线质感'
+        id: 'ink_wash',
+        category: 'oriental',
+        name: '🌸 大美写意水墨国漫',
+        tagEn: 'Traditional Chinese ink wash animation aesthetic, poetic watercolor brush strokes, ethereal misty mountains and rivers, flowing calligraphy lines, Dunhuang artistic elegance, animated oriental masterpiece, rice paper texture',
+        desc: '齐白石焦浓干湿水墨、飞天云雾',
+        dialogueHint: '适合诗词文言朗诵、古琴古筝流水乐与高远意境配音'
       },
       {
-        id: 'kodak500t',
-        category: 'cinema',
-        name: '🎞️ 柯达电影胶片 (500T)',
-        tagEn: 'Shot on Kodak Vision3 500T 5219, rich organic film grain, authentic halation on highlights, natural color saturation, anamorphic horizontal lens flare',
-        desc: '大师胶片、红边光晕'
-      },
-      {
-        id: 'commercial',
-        category: 'cinema',
-        name: '💎 高端商业大片',
-        tagEn: 'Luxury commercial product aesthetics, RED V-Raptor 8k, pristine studio lighting, crisp razor-sharp details, elegant slow motion, high-end color grading',
-        desc: '奢华广告质感'
-      },
-      {
-        id: 'lifestyle',
-        category: 'cinema',
-        name: '📱 手机真实街拍 (POV)',
-        tagEn: 'Raw candid lifestyle video, iPhone 15 Pro footage, authentic natural lighting, handheld POV vlog style, casual realism, subtle motion blur, unedited color science',
-        desc: '手机实拍Vlog'
+        id: 'wuxia_noir',
+        category: 'oriental',
+        name: '🗡️ 东方冷兵器硬核武侠',
+        tagEn: 'Gritty cinematic Eastern wuxia martial arts aesthetic, snow-covered bamboo grove, solitary swordsman in black bamboo hat, desaturated natural daylight, cold steel reflections, dramatic tension before sword slash',
+        desc: '斗笠黑袍、雪夜竹林寒光断水',
+        dialogueHint: '适合极简洗练的剑客江湖对决短句与龙吟破风声'
       },
 
-      // 🚀 科幻与次世代 (Sci-Fi & Digital)
+      // ==========================================
+      // ✨ 5. 新一代数字动漫 (Modern Anime & 3D)
+      // ==========================================
       {
-        id: 'cyberpunk',
-        category: 'scifi',
-        name: '🌆 赛博科幻未来',
-        tagEn: 'Futuristic sci-fi cyberpunk aesthetic, Blade Runner style, high-contrast neon atmosphere, volumetric rain haze, holographic reflections, anamorphic flares',
-        desc: '霓虹雨夜未来'
+        id: 'shinkai',
+        category: 'modern_anime',
+        name: '🌧️ 新海诚绝美光影动漫',
+        tagEn: 'Makoto Shinkai anime aesthetic, Your Name style, luminous photorealistic skies, sparkling lens flare refractions, tear-drop rain reflections on wet asphalt, hyper-detailed emotional anime scenery, vivid azure and sunset gradient',
+        desc: '你的名字、绝美雨后积水天桥彩虹',
+        dialogueHint: '适合青春悸动内心独白、钢琴治愈旋律与清脆雨滴声'
       },
       {
-        id: 'ue5_game',
-        category: 'scifi',
-        name: '🎮 虚幻5·次世代CG',
-        tagEn: 'Unreal Engine 5 cinematic render, Lumen global illumination, Nanite micro-polygon geometry, ray-traced reflections, photorealistic AAA game cutscene, hyper-detailed 3D character, 8k cinematic',
-        desc: 'UE5次世代、光线追踪过场CG'
-      },
-      {
-        id: 'vaporwave',
-        category: 'scifi',
-        name: '⚡ 蒸汽波赛博故障',
-        tagEn: 'Retro 1980s synthwave vaporwave aesthetic, glowing neon grid, CRT monitor scanlines, magenta and cyan color palette, chromatic glitch artifacts, lo-fi nostalgic dreamscape',
-        desc: '霓虹网格、蒸汽波迷幻复古'
+        id: 'pixar3d',
+        category: 'modern_anime',
+        name: '🧸 迪士尼·皮克斯 3D',
+        tagEn: 'Pixar 3D animation style, Disney RenderMan engine, subsurface scattering skin and clothing shaders, exaggerated expressive character design, warm whimsical volumetric lighting, octane render, 8k cute 3D CGI',
+        desc: '皮克斯3D、次表面散射萌趣表情',
+        dialogueHint: '适合幽默逗趣的双人对白、跳跃管乐节奏与夸张拟声'
       }
     ];
 
@@ -2184,6 +2664,581 @@ ${state.audio ? '- 原生音效: ' + state.audio : ''}
       toast.innerText = msg;
       toast.classList.add('show');
       setTimeout(() => { toast.classList.remove('show'); }, 1800);
+    }
+
+    
+    // ========================================================
+    // 🎬 AI 主题一键成片 · 智能分镜导演引擎 (Topic Director) - 100% 纯净英文
+    // ========================================================
+    let currentTopicStoryboard = [];
+
+    // 绝对纯净英文净化过滤器：彻底消除汉字、全角标点与多余逗号
+    function sanitizePureEnglish(str) {
+      if (!str) return '';
+      return str
+        .replace(/[\u4e00-\u9fa5]+/g, '') // 剔除所有中文字符
+        .replace(/[，、]/g, ', ')
+        .replace(/[。]/g, '. ')
+        .replace(/[；]/g, '; ')
+        .replace(/[“”‘’"']/g, '')
+        .replace(/[（(].*?[)）]/g, '')
+        .replace(/[【】《》「」『』]/g, '')
+        .replace(/,\s*,+/g, ',')
+        .replace(/\.\s*\.+/g, '.')
+        .replace(/\s{2,}/g, ' ')
+        .replace(/^[,\.\s]+/, '')
+        .replace(/[,\s]+$/, '')
+        .trim();
+    }
+
+    function openTopicDirectorModal() {
+      const modal = document.getElementById('topicDirectorModal');
+      modal.classList.add('open');
+      if (!document.getElementById('topicInput').value.trim()) {
+        fillTopicPreset('赛博朋克雨夜寻踪：侦探在霓虹反光的积水巷弄中追踪发光的仿生蝴蝶', 'cyberpunk', 'kling');
+      }
+    }
+
+    function closeTopicDirectorModal(e) {
+      if (!e || e.target.id === 'topicDirectorModal' || e.target.tagName === 'BUTTON') {
+        document.getElementById('topicDirectorModal').classList.remove('open');
+      }
+    }
+
+    function fillTopicPreset(topicText, style, engine) {
+      document.getElementById('topicInput').value = topicText;
+      if (style) document.getElementById('topicStylePreset').value = style;
+      if (engine) document.getElementById('topicTargetEngine').value = engine;
+    }
+
+    // 智能双轨分镜生成核心 (彻底分离中文剧情与好莱坞纯英文Prompt)
+    function generateStoryboardFromTopic() {
+      const topic = document.getElementById('topicInput').value.trim();
+      if (!topic) {
+        showToast('请先输入一个主题或故事灵感！');
+        return;
+      }
+
+      const shotCount = parseInt(document.getElementById('topicShotCount').value, 10) || 5;
+      const styleKey = document.getElementById('topicStylePreset').value;
+      const engineKey = document.getElementById('topicTargetEngine').value;
+
+      // 模型专属英文调优后缀 (纯英文)
+      let engineModifier = '';
+      if (engineKey === 'kling') {
+        engineModifier = ', realistic physical dynamics, natural temporal fluid continuity, zero morphing artifacts';
+      } else if (engineKey === 'runway') {
+        engineModifier = ', shot on 35mm Arri Alexa, master cinematic lighting, professional camera ease-in ease-out';
+      } else if (engineKey === 'hailuo') {
+        engineModifier = ', dramatic kinematic movement, subtle facial micro-expression, powerful emotional tension';
+      } else if (engineKey === 'luma') {
+        engineModifier = ', seamless 3D spatial coherence, fluid uninterrupted camera trajectory';
+      } else {
+        engineModifier = ', master cinematic composition, photorealistic 8k uhd, 35mm film stock';
+      }
+
+      // 预设主题库 (严格中英双轨对照字典)
+      const PRESET_STORIES = {
+        cyberpunk: {
+          subjectZh: '身穿深色高领风衣、面部带有发光淡蓝义体线路的赛博侦探',
+          subjectEn: 'a brooding cybernetic detective in a dark high-collar trench coat, subtle glowing cyan subdermal cyberware circuits along cheekbones, sharp intense gaze',
+          settingZh: '雨夜弥漫蓝色与品红双色霓虹的狭窄赛博街巷，积水倒映全息广告与穿梭悬浮车',
+          settingEn: 'a rain-drenched narrow cyberpunk alley glowing with dual cyan and magenta neon signage, wet reflective asphalt echoing holographic advertisements and distant flying hovercars',
+          shots: [
+            {
+              phaseZh: 'Shot 1 · 建立起幅 (Establishing)',
+              framingZh: '大远景 · 缓慢向前推进',
+              actionZh: '大远景建立世界观：暴雨倾盆的赛博大都会深巷，摩天大楼在浓重雨雾中隐现，霓虹倒影在积水中流淌。',
+              promptEn: 'A cinematic extreme wide establishing shot, vast cyberpunk cityscape with towering megastructures piercing torrential rain, glowing neon haze and dense atmospheric fog, camera slowly pushes forward with cinematic grandeur, high-contrast neon noir lighting, blue and magenta rim lights'
+            },
+            {
+              phaseZh: 'Shot 2 · 角色入场 (Introduction)',
+              framingZh: '中景跟拍 · 侧方平移',
+              actionZh: '中景跟随：赛博侦探踏入画面，脚踩浅水洼溅起细密水花，步伐沉稳从容，高领风衣在夜风中轻摆。',
+              promptEn: 'A cinematic medium tracking shot, a cybernetic detective in a dark trench coat steps into frame, wading through shallow puddles with splashing water droplets, camera smoothly tracks alongside subject movement, dramatic cyan rim light sculpting body silhouette, crisp footsteps acoustics'
+            },
+            {
+              phaseZh: 'Shot 3 · 张力特写 (Close-Up / Tension)',
+              framingZh: '面部特写 · 浅景深推镜',
+              actionZh: '特写镜头：镜头缓慢推向侦探面庞，面部义体微光轻微闪烁校准，水珠从帽檐滴落，眼神锐利锁向前方。',
+              promptEn: 'An intimate cinematic close-up shot with shallow depth of field, sharp focus on cybernetic glowing eye aperture adjusting focus, rain droplets dripping from coat collar, subtle micro-expressions, camera very slow subtle push-in, chiaroscuro lighting'
+            },
+            {
+              phaseZh: 'Shot 4 · 动作高潮 (Climax / Action)',
+              framingZh: '低角度仰拍 · 快速平移跟拍',
+              actionZh: '动态爆发：侦探骤然拔出腰间发光的脉冲武器，电弧火花在雨雾中炸裂，镜头伴随视差急速平摇。',
+              promptEn: 'A dynamic low-angle tracking shot, the detective swiftly draws a concealed glowing pulse weapon, electric sparks crackling in rain, dramatic particle dynamics, swift pan with motion parallax, anamorphic lens flare streaks, high tension cinematic action'
+            },
+            {
+              phaseZh: 'Shot 5 · 留白回味 (Resolution / Lingering)',
+              framingZh: '全景长镜头 · 缓慢拉远摇升',
+              actionZh: '收尾定格：主角在闪烁霓虹广告牌下缓缓站定，镜头缓慢后拉并摇向阴郁苍穹，留下深邃诗意背影。',
+              promptEn: 'A cinematic wide lingering shot, the detective stands motionless under flickering neon billboard as rain pours down, camera slowly pulls backward and cranes upward into foggy sky, poetic cyber noir twilight, lingering artistic composition'
+            },
+            {
+              phaseZh: 'Shot 6 · 戏剧尾声 (Epilogue)',
+              framingZh: '微距特写 · 焦点变换',
+              actionZh: '微距特写：一只散发微弱蓝光的机械仿生蝴蝶轻轻落在积水边缘，激起细小涟漪后振翅隐入夜色。',
+              promptEn: 'An extreme macro shot, a delicate glowing holographic butterfly rests gently on the rim of a shallow puddle, sending concentric ripples across water, then flutters away into shadows, locked-off macro focus'
+            }
+          ]
+        },
+        cafe: {
+          subjectZh: '神情疲惫但目光温和的年轻旅人，与手艺精湛的面馆老师傅',
+          subjectEn: 'a weary young traveler in a wet dark wool coat, alongside a master chef crafting ramen with disciplined graceful hands',
+          settingZh: '深夜老街深处泛着暖黄光晕的温馨拉面馆，木质吧台与凝结着水汽的玻璃窗',
+          settingEn: 'a cozy traditional ramen bar in a quiet midnight alley, warm amber interior glow, condensation on wooden-framed glass windows, steaming brass noodle pots',
+          shots: [
+            {
+              phaseZh: 'Shot 1 · 建立起幅 (Establishing)',
+              framingZh: '全景镜头 · 缓慢推入',
+              actionZh: '大远景：暴雨中的深夜寂静老街，一家悬挂红灯笼的小店透出温暖琥珀色光晕，木门敞开一角，白汽升腾。',
+              promptEn: 'A cinematic wide establishing shot, quiet rain-soaked Japanese alleyway at midnight, cozy golden lantern light spilling onto wet cobblestones, camera slowly dollies forward toward the warm glowing shop banner, soft volumetric haze, warm amber lighting'
+            },
+            {
+              phaseZh: 'Shot 2 · 角色入场 (Introduction)',
+              framingZh: '中景跟拍 · 视线平移',
+              actionZh: '中景：旅人推开木格移门踏入店内，收起滴水的雨伞，温热白雾扑面而来，老师傅抬头致意。',
+              promptEn: 'A cinematic medium shot, the traveler pushes open the wooden sliding door, stepping inside out of the cold rain, shaking wet umbrella, camera gently pans to reveal the bustling cozy counter, warm ambient tavern lighting'
+            },
+            {
+              phaseZh: 'Shot 3 · 美食特写 (Close-Up / Food)',
+              framingZh: '微距特写 · 浅景深',
+              actionZh: '特写：滚烫浓郁的豚骨高汤浇入海苔与拉面上，葱花翠绿，溏心蛋滑嫩，晶莹油花在汤面旋转。',
+              promptEn: 'An intimate extreme close-up shot, boiling rich pork broth swirling from ladle onto steaming ramen bowl, glistening chashu pork with tender micro-textures, macro shallow depth of field, appetizing studio-grade lighting'
+            },
+            {
+              phaseZh: 'Shot 4 · 情绪治愈 (Emotional Climax)',
+              framingZh: '中近景 · 缓慢环绕运镜',
+              actionZh: '中近景：旅人捧起热气腾腾的面碗轻抿一口高汤，紧绷的双肩慢慢舒展开，嘴角露出发自内心的释怀笑容。',
+              promptEn: 'A cinematic medium close-up, the traveler holding warm ceramic bowl, taking a hearty sip of steaming broth, shoulders relaxing with a genuine subtle smile of relief, camera slow circular orbit, gentle diffused warm rim light'
+            },
+            {
+              phaseZh: 'Shot 5 · 暖心收尾 (Resolution)',
+              framingZh: '室外透窗全景 · 缓慢后拉',
+              actionZh: '远景留白：从雨夜街头隔着蒙雾的玻璃窗回望，店内暖意融融，旅人静享美食，雨声与城市喧嚣渐远。',
+              promptEn: 'A cinematic wide shot looking through steam-covered window from outside alley, silhouette of traveler dining contentedly inside the glowing haven against cold dark night, camera slowly pulls back, poetic heartwarming atmosphere'
+            }
+          ]
+        },
+        wuxia: {
+          subjectZh: '一袭素黑斗笠长袍的孤独剑客，手握古朴青铜古剑',
+          subjectEn: 'a solitary martial arts swordsman in a black conical bamboo hat and flowing dark robes, clutching an ancient bronze sword',
+          settingZh: '狂风呼啸的深冬雪夜竹林，狂风卷起漫天白雪与残叶',
+          settingEn: 'a frozen bamboo forest during a heavy winter blizzard, howling gale sweeping swirls of snow and dry bamboo leaves, snow-covered stone pathway',
+          shots: [
+            {
+              phaseZh: 'Shot 1 · 建立起幅 (Establishing)',
+              framingZh: '大远景 · 史诗全景摇镜',
+              actionZh: '大远景：漫天暴风雪笼罩深山竹林，苍翠竹林压满皑皑白雪，肃杀寒气弥漫天地。',
+              promptEn: 'A cinematic extreme wide shot, towering snow-covered bamboo trees swaying in fierce blizzard, dense white mist enveloping mountain valley, camera slow sweeping panoramic pan, desaturated cold natural overcast daylight, ethereal oriental wuxia aesthetic'
+            },
+            {
+              phaseZh: 'Shot 2 · 踏雪前行 (Introduction)',
+              framingZh: '低角度跟拍 · 稳定推进',
+              actionZh: '低角度跟拍：黑袍剑客足蹬皂靴踏在深雪中，长袍随寒风翻卷，步履坚定沉着，雪地留下一串笔直脚印。',
+              promptEn: 'A cinematic medium tracking shot, the black-robed swordsman walks with measured deliberate footsteps across deep snow, cloth rustling in wind, camera low-angle tracking footsteps leaving crisp footprints'
+            },
+            {
+              phaseZh: 'Shot 3 · 杀气特写 (Tension Close-Up)',
+              framingZh: '面部与剑鞘特写 · 凝滞机位',
+              actionZh: '特写：斗笠阴影下冷峻深邃的眼神，一片雪花落在眼睫上悄然融化，拇指轻轻顶开三寸寒光剑鞘。',
+              promptEn: 'An intimate close-up shot, sharp focus on cold steely eyes beneath the shadow of bamboo hat, a single snowflake melting on eyelashes, fingers tightening around sword hilt, intense suspenseful pause, dramatic side rim light'
+            },
+            {
+              phaseZh: 'Shot 4 · 剑气爆发 (Climax Action)',
+              framingZh: '动态广角追踪 · 升格慢动作',
+              actionZh: '高潮动态：利刃出鞘破空呼啸，剑气如霜斩断风雪残叶，镜头随身形急速旋转平移，雪雾如浪花爆开。',
+              promptEn: 'A dynamic fast tracking shot, sudden explosion of sword drawing, silver blade slashing through falling snowflakes in slow motion, ice crystals shattering into glittering dust, dynamic camera whip-pan with motion blur, high kinematic tension'
+            },
+            {
+              phaseZh: 'Shot 5 · 剑归长鞘 (Resolution)',
+              framingZh: '中景至全景 · 慢速摇升',
+              actionZh: '收尾意境：长剑归鞘发出清脆龙吟，剑客静立雪中，飞雪渐寂，镜头缓缓升入苍茫云海。',
+              promptEn: 'A cinematic wide lingering shot, swordsman standing still as blade returns to scabbard with crisp click, snow settling softly around frozen silhouette, camera cranes upward into gray sky, poetic Chinese ink wash cinema finish'
+            }
+          ]
+        },
+        commercial: {
+          subjectZh: '晶莹剔透的多面切工水晶香水瓶，内部流淌着琥珀色液体',
+          subjectEn: 'an exquisite multifaceted crystal perfume bottle with amber liquid, pure minimalist luxury aesthetic',
+          settingZh: '深黑高反差镜面水台，纯净通透摄影棚柔光',
+          settingEn: 'flawless black reflective mirror water surface, pristine high-end studio lighting, soft diffused gradient backdrop',
+          shots: [
+            {
+              phaseZh: 'Shot 1 · 品牌亮相 (Hero Establishing)',
+              framingZh: '全景慢推 · 摄影棚主光',
+              actionZh: '商业全景：水晶香水瓶屹立在深黑镜面水台中央，倒影完美无瑕，镜头优雅慢速推进。',
+              promptEn: 'A cinematic wide commercial shot, perfume bottle standing majestically on mirror water surface, perfect inverted reflection, camera elegant slow push-in, pristine studio gradient lighting, RED 8K commercial clarity'
+            },
+            {
+              phaseZh: 'Shot 2 · 滴水微距 (Macro Physics)',
+              framingZh: '超微距升格 · 1000fps',
+              actionZh: '微距慢动作：一颗晶莹剔透的水滴垂直坠落，撞击水面激荡起皇冠状的环形涟漪。',
+              promptEn: 'An extreme macro slow-motion shot, a single crystal-clear water droplet falling vertically at 1000fps, impacting water surface creating delicate concentric crown splash ripples, sharp focus, glistening caustics'
+            },
+            {
+              phaseZh: 'Shot 3 · 材质光泽 (Material Sparkle)',
+              framingZh: '微距平移 · 浅景深光斑',
+              actionZh: '局部特写：镜头掠过瓶身烫金浮雕字母与切面棱角，液体折射出璀璨暖金焦外光斑。',
+              promptEn: 'A macro close-up pan, camera gliding across embossed gold lettering on crystal flacon, refraction of warm amber perfume fluid, luminous bokeh sparkle, luxury commercial grading'
+            },
+            {
+              phaseZh: 'Shot 4 · 雾化喷洒 (Dynamic Burst)',
+              framingZh: '环绕跟拍 · 极速慢放',
+              actionZh: '动态绽放：瓶口喷涌出细腻如星尘般的香氛水雾，在丁达尔光线中缓慢弥散漂浮。',
+              promptEn: 'A dynamic slow-motion burst, micro-fine perfume mist spraying gracefully into air catching volumetric studio light rays, microscopic droplets drifting like stardust, silky smooth camera orbit'
+            },
+            {
+              phaseZh: 'Shot 5 · 终章定格 (Final Lock)',
+              framingZh: '正面特写 · 居中构图',
+              actionZh: '商业定版：香水瓶静止居中，柔光勾勒出晶莹剔透的轮廓光芒，极致通透奢华。',
+              promptEn: 'A flawless static commercial hero shot, perfume bottle centered with glistening mist settling, soft studio back-lighting highlighting crystal facet brilliance, luxury advertising masterpiece'
+            }
+          ]
+        },
+        documentary: {
+          subjectZh: '穿梭飞行的敏捷穿越机与极险冰川脊线',
+          subjectEn: 'extreme FPV racing drone perspective gliding inches above jagged glacial ridge',
+          settingZh: '壮丽的阿尔卑斯雪峰群与翻滚云海，落日余晖洒满金色峰尖',
+          settingEn: 'majestic alpine snow peaks above an endless sea of rolling clouds, dramatic alpenglow sunset lighting',
+          shots: [
+            {
+              phaseZh: 'Shot 1 · 云巅俯瞰 (Aerial Establishing)',
+              framingZh: '高空航拍 · 大远景巡航',
+              actionZh: '空中大远景：夕阳余晖洒在连绵起伏的雪山之巅，云海翻涌，镜头平稳向金色峰顶巡航。',
+              promptEn: 'A high-altitude wide aerial establishing shot, endless alpine mountain range covered in pristine snow, sunset golden hour illuminating jagged mountain crests, smooth forward cruising shot, BBC Earth documentary quality'
+            },
+            {
+              phaseZh: 'Shot 2 · 俯冲穿梭 (FPV Dive)',
+              framingZh: '第一人称俯冲 · 极速掠地',
+              actionZh: '极速俯冲：穿越机沿着几乎垂直的千仞冰壁俯冲而下，气流撕裂雪雾，速度感呼之欲出。',
+              promptEn: 'A high-speed FPV diving shot, camera plunging steeply down vertical snowy cliff face, wind carving snow powder trails, dynamic visceral speed parallax, crisp 60fps clarity'
+            },
+            {
+              phaseZh: 'Shot 3 · 贴脊飞行 (Ridge Skimming)',
+              framingZh: '超低空跟拍 · 紧贴冰刃',
+              actionZh: '贴地掠过：镜头紧贴着刀刃般的山脊雪线飞驰，冰晶在逆光中闪耀夺目的金色光辉。',
+              promptEn: 'A low-altitude skimming tracking shot, camera flying inches above razor-sharp snow ridge, micro-details of ice crust and blowing powder snow, golden backlight creating glistening rim flare'
+            },
+            {
+              phaseZh: 'Shot 4 · 翻滚破云 (Cloud Break)',
+              framingZh: '横滚机动 · 冲破云层',
+              actionZh: '机动冲天：穿越机一个敏捷的横滚拉升，穿破厚重云海冲向辽阔晚霞，天地骤然开阔。',
+              promptEn: 'A breathtaking bank and roll maneuver, bursting through fluffy cloud layer into wide open sunset sky, panoramic vista bathed in warm amber and violet twilight, expansive grandeur'
+            },
+            {
+              phaseZh: 'Shot 5 · 暮色定格 (Sunset Lingering)',
+              framingZh: '广角悬停 · 缓慢后移',
+              actionZh: '暮色收尾：镜头在云海之上缓缓悬停后移，最后一抹残阳将冰川染成紫金，归于永恒宁静。',
+              promptEn: 'A slow majestic floating shot, hovering above the sea of clouds as the sun dips below horizon, silhouette of lonely snowy summit piercing clouds, poetic timeless serenity'
+            }
+          ]
+        }
+      };
+
+      // 智能识别主题类别
+      let matchedStory = null;
+      if (/赛博|科幻|仿生|义体|未来|机械|战警|黑客|全息|飞船/.test(topic)) {
+        matchedStory = PRESET_STORIES.cyberpunk;
+      } else if (/拉面|治愈|深夜|面馆|小吃|温暖|咖啡|茶馆|小酒馆|旅人/.test(topic)) {
+        matchedStory = PRESET_STORIES.cafe;
+      } else if (/古风|剑客|武侠|江湖|竹林|古刹|刀客|青锋|侠女|对决/.test(topic)) {
+        matchedStory = PRESET_STORIES.wuxia;
+      } else if (/香水|商业|奢华|珠宝|护肤|水台|广告|高定|静物/.test(topic)) {
+        matchedStory = PRESET_STORIES.commercial;
+      } else if (/雪峰|雪山|穿越机|极速|探险|航拍|自然|纪录片|冰川/.test(topic)) {
+        matchedStory = PRESET_STORIES.documentary;
+      }
+
+      // 如果未命中内置特定场景，启动通用戏剧五幕算法，严谨构建双轨
+      if (!matchedStory) {
+        // 自定义主题的纯英文主体与场景推断
+        let customSubjZh = '故事核心主角';
+        let customSubjEn = 'the central compelling protagonist with determined expression';
+        let customSetZh = '具有深刻氛围感的环境场景';
+        let customSetEn = 'an evocative atmospheric setting rich in cinematic depth and spatial texture';
+
+        if (/少女|女孩|女学生|女生/.test(topic)) {
+          customSubjZh = '清新明丽的年轻女孩';
+          customSubjEn = 'a graceful young woman with expressive eyes and wind-swept hair';
+        } else if (/少年|男孩|青年|男中学生/.test(topic)) {
+          customSubjZh = '身姿挺拔的青年主角';
+          customSubjEn = 'a handsome young man in casual attire with thoughtful eyes';
+        } else if (/老人|老者|师傅|匠人/.test(topic)) {
+          customSubjZh = '白发斑驳但神情专注的老匠人';
+          customSubjEn = 'an elderly artisan with weathered hands and serene focused gaze';
+        } else if (/猫|小狗|宠物|动物/.test(topic)) {
+          customSubjZh = '灵动可爱的毛茸茸小动物';
+          customSubjEn = 'an adorable lively animal with glossy fur and curious shining eyes';
+        }
+
+        if (/雨|积水|雨天|雨夜/.test(topic)) {
+          customSetZh = '暴雨过后的湿润街头与反光积水';
+          customSetEn = 'a rain-swept urban street with glistening wet pavement reflecting ambient light';
+        } else if (/森林|山林|自然|树林/.test(topic)) {
+          customSetZh = '薄雾弥漫的静谧森林与缕缕晨光';
+          customSetEn = 'a serene misty forest with sunbeams piercing through tall tree canopy';
+        } else if (/海|海滩|海岸|波浪/.test(topic)) {
+          customSetZh = '波光粼粼的辽阔海岸与翻滚浪花';
+          customSetEn = 'a majestic coastal shoreline with sparkling turquoise waves crashing onto sand';
+        } else if (/城市|街头|都市|巷弄/.test(topic)) {
+          customSetZh = '繁华热闹又富有层次的城市街巷';
+          customSetEn = 'a textured cinematic city avenue with architectural layers and warm street lamps';
+        }
+
+        matchedStory = {
+          subjectZh: customSubjZh,
+          subjectEn: customSubjEn,
+          settingZh: customSetZh,
+          settingEn: customSetEn,
+          shots: [
+            {
+              phaseZh: 'Shot 1 · 建立起幅 (Establishing)',
+              framingZh: '大远景 · 缓慢向前推进',
+              actionZh: `大远景建立时空背景：${customSetZh}，镜头伴随大气层透视缓慢推入。`,
+              promptEn: `A cinematic extreme wide establishing shot, ${customSetEn}, camera slowly pushes forward with grandeur, soft atmospheric haze, pristine cinematic lighting`
+            },
+            {
+              phaseZh: 'Shot 2 · 主体入场 (Introduction)',
+              framingZh: '中景跟拍 · 侧方平移',
+              actionZh: `中景跟拍：${customSubjZh}进入画面并与环境发生物理互动，动作自然舒展。`,
+              promptEn: `A cinematic medium tracking shot, ${customSubjEn} steps gracefully into frame, camera smoothly tracking subject motion with steady handheld realism`
+            },
+            {
+              phaseZh: 'Shot 3 · 张力特写 (Close-Up Focus)',
+              framingZh: '面部/细节特写 · 浅景深',
+              actionZh: '特写镜头：聚焦于面部眼神微表情或关键道具细节，光影层次丰富细腻。',
+              promptEn: 'An intimate cinematic close-up shot, shallow depth of field, sharp focus on delicate facial micro-expressions and eye gaze, soft dramatic key lighting'
+            },
+            {
+              phaseZh: 'Shot 4 · 动态高潮 (Dynamic Action)',
+              framingZh: '动态广角跟拍 · 速度感视差',
+              actionZh: '高潮动态：主体做出转折性核心动作，与周围环境激荡起强烈动态交互。',
+              promptEn: 'A dynamic tracking shot with swift camera motion, decisive kinetic physical action, dramatic motion parallax, crisp particle dynamics and lens flare'
+            },
+            {
+              phaseZh: 'Shot 5 · 诗意留白 (Lingering Finish)',
+              framingZh: '远景全景 · 慢速后拉摇升',
+              actionZh: '收官留白：主体在宏大空间中定格或渐行渐远，镜头缓缓后拉升入天际，余韵深长。',
+              promptEn: 'A cinematic wide lingering shot, the subject remains in the expansive setting, camera slowly pulling backward and craning upward, poetic sunset afterglow'
+            },
+            {
+              phaseZh: 'Shot 6 · 戏剧余韵 (Epilogue)',
+              framingZh: '微距静帧 · 焦点淡出',
+              actionZh: '尾声隐喻：静物微距特写，环境光影渐渐隐入暮色。',
+              promptEn: 'An extreme macro focus shot, delicate environmental artifact settling in twilight stillness, artistic cinematic closure'
+            }
+          ]
+        };
+      }
+
+      // 截取指定镜头数
+      const chosenShots = matchedStory.shots.slice(0, shotCount);
+
+      const styleObj = STYLES.find(s => s.id === styleKey) || STYLES[0];
+
+      currentTopicStoryboard = chosenShots.map((shot, idx) => {
+        // 组装并强制净化英文 Prompt (绝对零中文，自动融入当前画风标签)
+        const rawEn = `${shot.promptEn}, ${styleObj.tagEn}${engineModifier}`;
+        const cleanPromptEn = sanitizePureEnglish(rawEn);
+
+        return {
+          index: idx + 1,
+          phase: shot.phaseZh,
+          framingZh: shot.framingZh,
+          actionZh: shot.actionZh,
+          subjectZh: matchedStory.subjectZh,
+          settingZh: matchedStory.settingZh,
+          promptEn: cleanPromptEn,
+          style: styleKey,
+          dialogueHint: styleObj.dialogueHint || '适合搭配第一人称剧情旁白或环境拟音',
+          aspectRatio: '--ar 16:9'
+        };
+      });
+
+      renderStoryboardUI();
+      showToast(`已成功生成 ${shotCount} 幕 100% 纯英文指令分镜！`);
+    }
+
+    function renderStoryboardUI() {
+      const resultArea = document.getElementById('storyboardResultArea');
+      const summaryBar = document.getElementById('storyboardSummaryBar');
+      const cardsContainer = document.getElementById('storyboardCardsContainer');
+
+      resultArea.style.display = 'block';
+
+      summaryBar.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span>✅ <b>全片分镜已生成 (100% 纯英文指令 · 零中文夹杂)</b></span>
+          <span style="background: rgba(16, 185, 129, 0.2); color: #34d399; font-size: 11px; padding: 2px 7px; border-radius: 4px; font-weight: 700;">PURE ENGLISH VERIFIED</span>
+        </div>
+        <div style="font-size: 11px; opacity: 0.9;">
+          共 ${currentTopicStoryboard.length} 个镜头 · 预计时长 ${(currentTopicStoryboard.length * 4.5).toFixed(1)}s · 角色与环境一致性已锁定
+        </div>
+      `;
+
+      cardsContainer.innerHTML = currentTopicStoryboard.map((shot, idx) => `
+        <div class="shot-card">
+          <div class="shot-header">
+            <div class="shot-badge-title">
+              <span class="shot-number-badge">SHOT ${shot.index}</span>
+              <span class="shot-phase-tag">${shot.phase}</span>
+            </div>
+            <div class="shot-meta-pills">
+              <span class="shot-meta-pill">🎬 ${shot.framingZh}</span>
+              <span class="shot-meta-pill">⏱️ 4.5s</span>
+              <span class="shot-meta-pill">📐 16:9</span>
+            </div>
+          </div>
+
+          <div class="shot-desc-zh">
+            <b>【中文视听剧情】</b>${shot.actionZh}
+          </div>
+
+          <div style="background: rgba(124, 58, 237, 0.08); border-left: 3px solid var(--brand-primary); padding: 7px 12px; margin-bottom: 10px; border-radius: 0 6px 6px 0; font-size: 11px; color: #ddd6fe;">
+            <b>💬 推荐台词/音效提示:</b> ${shot.dialogueHint || '可搭配第一人称剧情旁白或环境拟音，强化定格动漫画风叙事感'}
+          </div>
+
+          <div class="shot-prompt-en-box" id="shotPrompt_${idx}">${shot.promptEn}</div>
+
+          <div class="shot-card-actions">
+            <div class="shot-target-model-hint">
+              <span>🛡️ 纯好莱坞英文语法 · 可直接喂给 Sora / Kling / Runway / 海螺</span>
+            </div>
+            <div class="shot-btns-group">
+              <button class="tool-btn" onclick="copyShotPrompt(${idx}, this)">
+                📋 复制 Prompt
+              </button>
+              <button class="load-to-muse-btn" onclick="loadShotToMuseStudio(${idx})" title="将此镜头所有参数载入主工作台继续深度精修">
+                <span>📥 载入至 Muse 工坊精修</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      resultArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function copyShotPrompt(idx, btn) {
+      const shot = currentTopicStoryboard[idx];
+      if (!shot) return;
+      navigator.clipboard.writeText(shot.promptEn).then(() => {
+        showToast(`已复制 Shot ${shot.index} 纯正英文提示词！`);
+        if (btn) {
+          const orig = btn.innerText;
+          btn.innerText = '已复制 ✓';
+          setTimeout(() => { btn.innerText = orig; }, 1500);
+        }
+      });
+    }
+
+    // 载入至主工作台精修 (保持中文输入，但在生成英文时 100% 纯英文转换)
+    function loadShotToMuseStudio(idx) {
+      const shot = currentTopicStoryboard[idx];
+      if (!shot) return;
+
+      const state = {
+        style: shot.style || 'cinematic',
+        subject: shot.subjectZh || '',
+        setting: shot.settingZh || '',
+        action: shot.actionZh || '',
+        framing: 'A cinematic medium tracking shot',
+        movement: "smoothly tracks alongside the subject's movement",
+        lighting: 'Cinematic dramatic lighting, high dynamic range',
+        audio: '',
+        customStyle: '',
+        isTimeline: false,
+        aspectRatio: '--ar 16:9'
+      };
+
+      applyStateToForm(state);
+      updatePrompt();
+
+      document.getElementById('topicDirectorModal').classList.remove('open');
+      showToast(`🎬 已成功将 Shot ${shot.index} 载入工坊主台！`);
+    }
+
+    // 复制全片分镜包 (JSON/Markdown)
+    function copyAllShotsBundle() {
+      if (!currentTopicStoryboard.length) {
+        showToast('暂无生成的分镜内容');
+        return;
+      }
+      let bundle = `# 🎬 AI 视频多镜头全片工业分镜工程 (100% Pure English Prompts)\n\n`;
+      bundle += `主题: ${document.getElementById('topicInput').value.trim()}\n`;
+      bundle += `镜头总数: ${currentTopicStoryboard.length} 个镜头\n\n`;
+
+      currentTopicStoryboard.forEach(s => {
+        bundle += `### [${s.phase}] - ${s.framingZh}\n`;
+        bundle += `- 中文视听: ${s.actionZh}\n`;
+        bundle += `- 纯英文 Master Prompt:\n\`\`\`text\n${s.promptEn}\n\`\`\`\n\n`;
+      });
+
+      navigator.clipboard.writeText(bundle).then(() => {
+        showToast('已复制完整全片纯英文分镜工程包！');
+      });
+    }
+
+    // 导出 FFmpeg 自动化视频剪辑脚本
+    function copyFFmpegScript() {
+      if (!currentTopicStoryboard.length) {
+        showToast('暂无生成的分镜内容');
+        return;
+      }
+
+      let sh = `#!/bin/bash\n# 自动化视频拼剪脚本 (FFmpeg Multi-shot Assembler)\n\n`;
+      sh += `# 1. 请将各模型渲染导出的片段命名为 shot_1.mp4, shot_2.mp4 ...\n`;
+      sh += `cat << 'EOF' > filelist.txt\n`;
+      currentTopicStoryboard.forEach(s => {
+        sh += `file 'shot_${s.index}.mp4'\n`;
+      });
+      sh += `EOF\n\n`;
+      sh += `# 2. 无损快速串联合并\n`;
+      sh += `ffmpeg -f concat -safe 0 -i filelist.txt -c copy full_movie_rough_cut.mp4\n\n`;
+      sh += `echo "🎬 全片粗剪合并完成: full_movie_rough_cut.mp4"\n`;
+
+      navigator.clipboard.writeText(sh).then(() => {
+        showToast('已复制 FFmpeg 自动化剪辑脚本！');
+      });
+    }
+
+    
+    // 异步调度多模型渲染管道
+    function triggerBatchRenderPipeline() {
+      if (!currentTopicStoryboard.length) {
+        showToast('请先生成分镜内容！');
+        return;
+      }
+      const engineKey = document.getElementById('topicTargetEngine').value;
+      const payload = {
+        provider: engineKey,
+        shots: currentTopicStoryboard.map(s => ({
+          index: s.index,
+          prompt_en: s.promptEn,
+          aspect_ratio: '16:9',
+          duration: 4.5
+        }))
+      };
+
+      showToast('正在提交渲染任务至网关...');
+      fetch('/api/render/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(r => r.json())
+      .then(data => {
+        if (data.status === 'success') {
+          showToast(`已成功调度引擎 [${data.provider}]，创建 ${data.tasks.length} 个渲染任务！`);
+        } else {
+          showToast(data.message || '后端网关返回错误');
+        }
+      })
+      .catch(err => {
+        showToast('已离线运行（若需真实后端生成，请运行 python3 server.py）');
+      });
     }
 
     window.addEventListener('DOMContentLoaded', init);
