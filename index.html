@@ -1341,7 +1341,12 @@
             <span class="badge-number">5</span>
             运镜轨迹与光影氛围 (Camera Work & Lighting)
           </div>
-          <div class="card-subtext">好莱坞工业运镜</div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <button type="button" class="tool-btn" style="background: rgba(124, 58, 237, 0.2); border-color: var(--brand-primary); color: #c4b5fd; font-weight: 700;" onclick="autoAdaptCinematography()" title="根据您输入的动作与剧情，自动推导最匹配的好莱坞机位与运镜">
+              ⚡ 智能语义适配机位与运镜
+            </button>
+            <div class="card-subtext" style="margin-left: 4px;">好莱坞工业运镜</div>
+          </div>
         </div>
 
         <div class="form-row">
@@ -3239,6 +3244,89 @@ ${state.audio ? '- 原生音效: ' + state.audio : ''}
       .catch(err => {
         showToast('已离线运行（若需真实后端生成，请运行 python3 server.py）');
       });
+    }
+
+    
+    // ==========================================
+    // ⚡ 镜头语言智能语义自适应引擎 (Auto-Cinematography)
+    // 根据用户输入的剧情、动作与主体特征，自动反推电影导演最佳机位与运镜
+    // ==========================================
+    function autoAdaptCinematography() {
+      const action = (document.getElementById('actionInput').value || '').trim();
+      const subject = (document.getElementById('subjectInput').value || '').trim();
+      const setting = (document.getElementById('settingInput').value || '').trim();
+      const fullText = `${subject} ${setting} ${action}`;
+
+      if (!fullText.trim()) {
+        showToast('请先在上方输入角色主体或剧情动作，以便 AI 推导机位！');
+        return;
+      }
+
+      let targetFraming = 'A cinematic medium tracking shot';
+      let targetMove = "smoothly tracks alongside the subject's movement";
+      let matchReason = '标准中景跟拍';
+
+      // 规则 1: 极微距 / 情绪微表情特写
+      if (/眼神|目光|眼角|瞳孔|眼泪|眼眶|微笑|嘴唇|嘴角|面部|微表情|睫毛|指尖|手指|水滴|露珠|汗水|戒指|吊坠|手表|手雷|刀尖|枪口|切面|纹理/.test(fullText)) {
+        if (/水滴|露珠|睫毛|指尖|戒指|蚂蚁|昆虫|螺丝|微观/.test(fullText)) {
+          targetFraming = "An extreme close-up shot on micro details";
+          targetMove = "remains on a static tripod with shallow depth of field";
+          matchReason = "微距极特写 + 三脚架浅景深凝视";
+        } else {
+          targetFraming = "A close-up shot focusing on facial emotions";
+          targetMove = "performs a slow forward push-in";
+          matchReason = "面部微表情情绪特写 + 慢速推镜";
+        }
+      }
+      // 规则 2: 大动态 / 追逐 / 战斗 / 奔跑 / 飞行
+      else if (/跑|疾驰|飞奔|奔袭|追逐|追击|挥刀|拔剑|出鞘|射击|开火|冲刺|翻滚|腾空|跳跃|飞跃|滑板|漂移|爆炸|扑向/.test(fullText)) {
+        if (/穿越机|飞船|俯冲|掠过|高空坠落|翱翔/.test(fullText)) {
+          targetFraming = "A low-angle heroic shot looking up";
+          targetMove = "swoops forward dynamically in FPV drone style";
+          matchReason = "低角度 + FPV 穿越机动态俯冲";
+        } else {
+          targetFraming = "A low-angle heroic shot looking up";
+          targetMove = "smoothly tracks alongside the subject's movement";
+          matchReason = "低角度英雄仰拍 + 平滑高速平移跟镜";
+        }
+      }
+      // 规则 3: 宏大世界观 / 城市全景 / 废土 / 自然风光
+      else if (/城市|全景|废墟|沙漠|荒漠|群山|雪山|云海|星空|银河|大地|地平线|旷野|苍茫|天空|俯瞰|天地|林海/.test(fullText)) {
+        if (/俯瞰|上帝视角|垂直|从高空俯视/.test(fullText)) {
+          targetFraming = "An overhead bird's eye view";
+          targetMove = "executes a sweeping crane shot descending from high";
+          matchReason = "俯瞰鸟瞰上帝视角 + 大摇臂平滑升降";
+        } else {
+          targetFraming = "A cinematic wide establishing shot";
+          targetMove = "performs a slow forward push-in";
+          matchReason = "宏大环境大远景 + 慢速史诗推进";
+        }
+      }
+      // 规则 4: 危机 / 眩晕 / 倾斜 / 心理失衡
+      else if (/眩晕|危机|惊恐|迷失|颤抖|倒塌|倾斜|失衡|坠落|失重|幻觉|噩梦|诡异|慌乱/.test(fullText)) {
+        targetFraming = "A dramatic dutch angle shot";
+        targetMove = "executes a vertigo-inducing dolly zoom";
+        matchReason = "荷兰式倾斜张力构图 + 希区柯克眩晕变焦";
+      }
+      // 规则 5: 第一人称生活 Vlog / 主观沉浸
+      else if (/第一人称|我看见|我走在|主观视角|低头看|手持|手机录制|Vlog|打卡|探店/.test(fullText)) {
+        targetFraming = "A first-person POV perspective";
+        targetMove = "operates as authentic handheld camera with subtle natural shake";
+        matchReason = "第一人称主观视角 + 真实手持自然呼吸晃动";
+      }
+      // 规则 6: 离别 / 渐行渐远 / 收官留白
+      else if (/渐行渐远|远去|背影|离开|回望|离别|夕阳下消失|走远|独行|定格/.test(fullText)) {
+        targetFraming = "A cinematic wide establishing shot";
+        targetMove = "performs a gentle backward pull-out";
+        matchReason = "环境全景 + 缓慢后拉留白";
+      }
+
+      // 执行联动赋值
+      document.getElementById('shotFraming').value = targetFraming;
+      document.getElementById('cameraMove').value = targetMove;
+      updatePrompt();
+
+      showToast(`🎬 已根据剧情智能适配：【${matchReason}】！`);
     }
 
     window.addEventListener('DOMContentLoaded', init);
